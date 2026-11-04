@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import './App.css'
+import './LoginPage.css'
 
 const PHOTOS = {
   left: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=400&q=80',
@@ -25,7 +25,7 @@ function Logo() {
   )
 }
 
-function App() {
+function LoginPage({ onLogin }) {
   const [mode, setMode] = useState('login')
   const [identifier, setIdentifier] = useState('')
   const [password, setPassword] = useState('')
@@ -49,7 +49,7 @@ function App() {
     }
 
     if (mode === 'login') {
-      setMessage('Login pronto no frontend. A API entra na próxima etapa.')
+      onLogin()
       return
     }
 
@@ -178,4 +178,5 @@ function App() {
   )
 }
 
-export default App
+
+export default LoginPage
