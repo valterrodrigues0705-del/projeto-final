@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import Sidebar from '../components/feed/Sidebar.jsx'
-import Icon from '../components/feed/Icon.jsx'
-import { PROFILE_IMAGE } from '../components/feed/feedData.js'
+const PROFILE_IMAGE = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80'
 import './ProfilePage.css'
 
 const TABS = [
@@ -33,7 +31,20 @@ export default function ProfilePage({ onHome, onLogout }) {
   }
 
   return <div className="profile-app">
-    <Sidebar active="profile" onHome={onHome} onProfile={() => setNotice('Você já está no seu perfil.')} onLogout={onLogout} onNotice={setNotice}/>
+    <aside className="feed-sidebar">
+      <a className="feed-wordmark" href="#perfil" aria-label="Momentos">momentos<span>✳</span></a>
+      <nav className="feed-nav" aria-label="Navegação principal">
+        <button className="feed-nav-item" onClick={onHome}><span className="profile-side-icon">⌂</span><span>Início</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('A busca estará disponível em breve.')}><span className="profile-side-icon">⌕</span><span>Pesquisar</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('Explore novas publicações em breve.')}><span className="profile-side-icon">◇</span><span>Explorar</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('Seus vídeos aparecerão aqui.')}><span className="profile-side-icon">▷</span><span>Reels</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('Sua caixa de mensagens está vazia.')}><span className="profile-side-icon">➤</span><span>Mensagens</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('Você está em dia com as novidades.')}><span className="profile-side-icon">♡</span><span>Notificações</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('A criação de publicação estará disponível em breve.')}><span className="profile-side-icon">＋</span><span>Criar</span></button>
+        <button className="feed-nav-item profile-nav active" onClick={() => setNotice('Você já está no seu perfil.')}><img src={PROFILE_IMAGE} alt=""/><span>Perfil</span></button>
+      </nav>
+      <button className="feed-nav-item sidebar-more" onClick={onLogout}><span className="profile-side-icon">☰</span><span>Sair / Mais</span></button>
+    </aside>
     <main className="profile-main">
       <header className="profile-mobile-header"><span className="profile-mobile-name">{username}</span><button onClick={() => setModal('settings')} aria-label="Configurações"><span className="profile-gear">⚙</span></button></header>
       <section className="profile-summary">
@@ -53,7 +64,7 @@ export default function ProfilePage({ onHome, onLogout }) {
       <nav className="profile-tabs" aria-label="Conteúdo do perfil">{TABS.map(item => <button key={item.id} className={tab === item.id ? 'selected' : ''} onClick={() => setTab(item.id)} aria-label={item.label}><span>{item.icon}</span><small>{item.label}</small></button>)}</nav>
 
       <section className="profile-empty">
-        <div className="empty-camera"><Icon name="video" size={40}/></div>
+        <div className="empty-camera"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="5"/><path d="m10 8 6 4-6 4z"/></svg></div>
         <h2>{tab === 'posts' ? 'Compartilhar fotos' : tab === 'saved' ? 'Itens salvos' : tab === 'reposts' ? 'Seus reposts' : 'Fotos com você'}</h2>
         <p>{tab === 'posts' ? 'Quando você compartilhar fotos, elas aparecerão no seu perfil.' : 'O conteúdo aparecerá aqui quando estiver disponível.'}</p>
         {tab === 'posts' && <button onClick={() => setModal('new-post')}>Compartilhar sua primeira foto</button>}
