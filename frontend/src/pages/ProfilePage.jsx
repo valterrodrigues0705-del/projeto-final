@@ -9,6 +9,21 @@ const TABS = [
   { id: 'tagged', label: 'Marcados', icon: '♙' },
 ]
 
+function ProfileIcon({ name }) {
+  const shapes = {
+    home: <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z" />,
+    search: <><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></>,
+    explore: <><rect x="3" y="3" width="18" height="18" rx="5"/><path d="m15.8 8.2-2.2 5.4-5.4 2.2 2.2-5.4z"/></>,
+    video: <><rect x="3" y="4" width="18" height="16" rx="5"/><path d="m10 8 6 4-6 4z"/></>,
+    message: <><path d="m21 3-7.5 18-3.8-7.7L2 9.5z"/><path d="M9.7 13.3 21 3"/></>,
+    heart: <path d="M20.8 8.8c0 5.2-8.8 10.3-8.8 10.3S3.2 14 3.2 8.8a4.6 4.6 0 0 1 8.8-1.9 4.6 4.6 0 0 1 8.8 1.9Z" />,
+    plus: <><path d="M12 5v14M5 12h14"/></>,
+    menu: <><path d="M4 7h16M4 12h16M4 17h16"/></>,
+  }
+
+  return <svg className="profile-side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{shapes[name]}</svg>
+}
+
 export default function ProfilePage({ onHome, onLogout }) {
   const [username, setUsername] = useState('abion_lorran')
   const [displayName, setDisplayName] = useState('Jess7x')
@@ -34,16 +49,16 @@ export default function ProfilePage({ onHome, onLogout }) {
     <aside className="feed-sidebar">
       <a className="feed-wordmark" href="#perfil" aria-label="Momentos">momentos<span>✳</span></a>
       <nav className="feed-nav" aria-label="Navegação principal">
-        <button className="feed-nav-item" onClick={onHome}><span className="profile-side-icon">⌂</span><span>Início</span></button>
-        <button className="feed-nav-item" onClick={() => setNotice('A busca estará disponível em breve.')}><span className="profile-side-icon">⌕</span><span>Pesquisar</span></button>
-        <button className="feed-nav-item" onClick={() => setNotice('Explore novas publicações em breve.')}><span className="profile-side-icon">◇</span><span>Explorar</span></button>
-        <button className="feed-nav-item" onClick={() => setNotice('Seus vídeos aparecerão aqui.')}><span className="profile-side-icon">▷</span><span>Reels</span></button>
-        <button className="feed-nav-item" onClick={() => setNotice('Sua caixa de mensagens está vazia.')}><span className="profile-side-icon">➤</span><span>Mensagens</span></button>
-        <button className="feed-nav-item" onClick={() => setNotice('Você está em dia com as novidades.')}><span className="profile-side-icon">♡</span><span>Notificações</span></button>
-        <button className="feed-nav-item" onClick={() => setNotice('A criação de publicação estará disponível em breve.')}><span className="profile-side-icon">＋</span><span>Criar</span></button>
+        <button className="feed-nav-item" onClick={onHome}><ProfileIcon name="home"/><span>Início</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('A busca estará disponível em breve.')}><ProfileIcon name="search"/><span>Pesquisar</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('Explore novas publicações em breve.')}><ProfileIcon name="explore"/><span>Explorar</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('Seus vídeos aparecerão aqui.')}><ProfileIcon name="video"/><span>Reels</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('Sua caixa de mensagens está vazia.')}><ProfileIcon name="message"/><span>Mensagens</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('Você está em dia com as novidades.')}><ProfileIcon name="heart"/><span>Notificações</span></button>
+        <button className="feed-nav-item" onClick={() => setNotice('A criação de publicação estará disponível em breve.')}><ProfileIcon name="plus"/><span>Criar</span></button>
         <button className="feed-nav-item profile-nav active" onClick={() => setNotice('Você já está no seu perfil.')}><img src={PROFILE_IMAGE} alt=""/><span>Perfil</span></button>
       </nav>
-      <button className="feed-nav-item sidebar-more" onClick={onLogout}><span className="profile-side-icon">☰</span><span>Sair / Mais</span></button>
+      <button className="feed-nav-item sidebar-more" onClick={onLogout}><ProfileIcon name="menu"/><span>Sair / Mais</span></button>
     </aside>
     <main className="profile-main">
       <header className="profile-mobile-header"><span className="profile-mobile-name">{username}</span><button onClick={() => setModal('settings')} aria-label="Configurações"><span className="profile-gear">⚙</span></button></header>
