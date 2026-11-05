@@ -1,0 +1,22 @@
+
+/* Reset: padroniza o cálculo de tamanhos e remove margens padrão do navegador. */
+/* Este seletor aplica estilos aos elementos *,
+*::before,
+*::after. */
+*,
+*::before,
+*::after {
+  /* Controla se padding e borda entram no tamanho total do elemento. Valor usado: border-box. */
+  box-sizing: border-box;
+}
+/* Este seletor aplica estilos aos elementos html,
+body,
+#root. */
+html,
+body,
+#root {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0. */
+  margin: 0;
+  /* Define a altura mínima para o elemento. Valor usado: 100%. */
+  min-height: 100%;
+}

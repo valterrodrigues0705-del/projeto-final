@@ -1,0 +1,1203 @@
+
+/* Feed: define o menu lateral, a coluna de publicações, stories e sugestões. */
+/* Grade geral do feed e variáveis de cor usadas pelos elementos filhos. */
+/* Este seletor aplica estilos aos elementos .feed-app. */
+.feed-app {
+  /* Define o valor da propriedade visual “--feed-bg”. Valor usado: #0d0f12. */
+  --feed-bg: #0d0f12;
+  /* Define o valor da propriedade visual “--feed-panel”. Valor usado: #15171b. */
+  --feed-panel: #15171b;
+  /* Define o valor da propriedade visual “--feed-line”. Valor usado: #292c31. */
+  --feed-line: #292c31;
+  /* Define a altura mínima para o elemento. Valor usado: 100vh. */
+  min-height: 100vh;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define as colunas do layout em grade. Valor usado: 245px minmax(480px, 630px) minmax(270px, 340px). */
+  grid-template-columns: 245px minmax(480px, 630px) minmax(270px, 340px);
+  /* Distribui os elementos no eixo principal do layout. Valor usado: center. */
+  justify-content: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: clamp(36px, 6vw, 110px). */
+  gap: clamp(36px, 6vw, 110px);
+  /* Define o fundo do elemento. Valor usado: var(--feed-bg). */
+  background: var(--feed-bg);
+  /* Define a cor do texto e dos ícones. Valor usado: #f4f4f5. */
+  color: #f4f4f5;
+}
+/* Menu fixo que expande ao receber foco ou passar o mouse. */
+/* Este seletor aplica estilos aos elementos .feed-sidebar. */
+.feed-sidebar {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: fixed. */
+  position: fixed;
+  /* Controla qual elemento fica sobre os outros. Valor usado: 25. */
+  z-index: 25;
+  /* Define a distância em relação à esquerda. Valor usado: 0. */
+  left: 0;
+  /* Define a distância em relação ao topo do elemento de referência. Valor usado: 0. */
+  top: 0;
+  /* Define a altura do elemento. Valor usado: 100vh. */
+  height: 100vh;
+  /* Define a largura do elemento. Valor usado: 76px. */
+  width: 76px;
+  /* Define a largura mínima do elemento. Valor usado: 0. */
+  min-width: 0;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 34px 10px 22px. */
+  padding: 34px 10px 22px;
+  /* Define a borda direita. Valor usado: 1px solid var(--feed-line). */
+  border-right: 1px solid var(--feed-line);
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Define a direção dos itens no flexbox. Valor usado: column. */
+  flex-direction: column;
+  /* Controla o conteúdo que ultrapassa os limites do elemento. Valor usado: hidden. */
+  overflow: hidden;
+  /* Define o fundo do elemento. Valor usado: var(--feed-bg). */
+  background: var(--feed-bg);
+  /* Suaviza a mudança entre estados visuais. Valor usado: width .2s ease, padding .2s ease, box-shadow .2s ease. */
+  transition: width .2s ease, padding .2s ease, box-shadow .2s ease;
+}
+/* Este seletor aplica estilos aos elementos .feed-wordmark. */
+.feed-wordmark {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: inline-flex. */
+  display: inline-flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 7px. */
+  gap: 7px;
+  /* Define a largura do elemento. Valor usado: fit-content. */
+  width: fit-content;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Escolhe a família tipográfica. Valor usado: Georgia, serif. */
+  font-family: Georgia, serif;
+  /* Define o tamanho do texto. Valor usado: 29px. */
+  font-size: 29px;
+  /* Define a espessura/peso do texto. Valor usado: 700. */
+  font-weight: 700;
+  /* Define o espaço entre letras. Valor usado: -1.6px. */
+  letter-spacing: -1.6px;
+}
+/* Este seletor aplica estilos aos elementos .feed-wordmark span. */
+.feed-wordmark span {
+  /* Define a cor do texto e dos ícones. Valor usado: #f34085. */
+  color: #f34085;
+  /* Escolhe a família tipográfica. Valor usado: sans-serif. */
+  font-family: sans-serif;
+  /* Define o tamanho do texto. Valor usado: 17px. */
+  font-size: 17px;
+}
+/* Este seletor aplica estilos aos elementos .feed-sidebar:not(:hover):not(:focus-within) .feed-wordmark. */
+.feed-sidebar:not(:hover):not(:focus-within) .feed-wordmark {
+  /* Define o tamanho do texto. Valor usado: 0. */
+  font-size: 0;
+  /* Define o espaço entre letras. Valor usado: 0. */
+  letter-spacing: 0;
+}
+/* Este seletor aplica estilos aos elementos .feed-nav. */
+.feed-nav {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o espaço entre os elementos filhos. Valor usado: 8px. */
+  gap: 8px;
+  /* Define a largura do elemento. Valor usado: 100%. */
+  width: 100%;
+  /* Define o valor da propriedade visual “margin-top”. Valor usado: 40px. */
+  margin-top: 40px;
+}
+/* Este seletor aplica estilos aos elementos .feed-nav-item. */
+.feed-nav-item {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 16px. */
+  gap: 16px;
+  /* Define a largura do elemento. Valor usado: 100%. */
+  width: 100%;
+  /* Define a altura mínima para o elemento. Valor usado: 50px. */
+  min-height: 50px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 10px 12px. */
+  padding: 10px 12px;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Arredonda os cantos. Valor usado: 10px. */
+  border-radius: 10px;
+  /* Define o fundo do elemento. Valor usado: transparent. */
+  background: transparent;
+  /* Define a cor do texto e dos ícones. Valor usado: #f2f2f2. */
+  color: #f2f2f2;
+  /* Alinha o texto dentro do elemento. Valor usado: left. */
+  text-align: left;
+  /* Define o tamanho do texto. Valor usado: 15px. */
+  font-size: 15px;
+  /* Suaviza a mudança entre estados visuais. Valor usado: background .16s, transform .16s. */
+  transition: background .16s, transform .16s;
+}
+/* Este seletor aplica estilos aos elementos .feed-nav-item:hover. */
+.feed-nav-item:hover {
+  /* Define o fundo do elemento. Valor usado: #202227. */
+  background: #202227;
+  /* Move, gira ou dimensiona o elemento. Valor usado: translateX(2px). */
+  transform: translateX(2px);
+}
+/* Este seletor aplica estilos aos elementos .feed-nav-item.active span. */
+.feed-nav-item.active span {
+  /* Define a espessura/peso do texto. Valor usado: 700. */
+  font-weight: 700;
+}
+/* Este seletor aplica estilos aos elementos .feed-nav-item svg. */
+.feed-nav-item svg {
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 0 0 auto. */
+  flex: 0 0 auto;
+  /* Define a largura do elemento. Valor usado: 25px. */
+  width: 25px;
+  /* Define a altura do elemento. Valor usado: 25px. */
+  height: 25px;
+}
+/* Este seletor aplica estilos aos elementos .feed-sidebar:not(:hover):not(:focus-within) .feed-nav-item. */
+.feed-sidebar:not(:hover):not(:focus-within) .feed-nav-item {
+  /* Distribui os elementos no eixo principal do layout. Valor usado: center. */
+  justify-content: center;
+  /* Define o valor da propriedade visual “padding-right”. Valor usado: 8px. */
+  padding-right: 8px;
+  /* Define o valor da propriedade visual “padding-left”. Valor usado: 8px. */
+  padding-left: 8px;
+}
+/* Este seletor aplica estilos aos elementos .feed-sidebar:not(:hover):not(:focus-within) .feed-nav-item > span. */
+.feed-sidebar:not(:hover):not(:focus-within) .feed-nav-item > span {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: none. */
+  display: none;
+}
+/* Este seletor aplica estilos aos elementos .feed-sidebar:hover, .feed-sidebar:focus-within. */
+.feed-sidebar:hover, .feed-sidebar:focus-within {
+  /* Define a largura do elemento. Valor usado: 245px. */
+  width: 245px;
+  /* Define o valor da propriedade visual “padding-right”. Valor usado: 18px. */
+  padding-right: 18px;
+  /* Define o valor da propriedade visual “padding-left”. Valor usado: 26px. */
+  padding-left: 26px;
+  /* Adiciona uma sombra. Valor usado: 12px 0 28px #0005. */
+  box-shadow: 12px 0 28px #0005;
+}
+/* Este seletor aplica estilos aos elementos .feed-sidebar:hover .feed-nav-item, .feed-sidebar:focus-within .feed-nav-item. */
+.feed-sidebar:hover .feed-nav-item, .feed-sidebar:focus-within .feed-nav-item {
+  /* Distribui os elementos no eixo principal do layout. Valor usado: flex-start. */
+  justify-content: flex-start;
+  /* Define o valor da propriedade visual “padding-right”. Valor usado: 12px. */
+  padding-right: 12px;
+  /* Define o valor da propriedade visual “padding-left”. Valor usado: 12px. */
+  padding-left: 12px;
+}
+/* Este seletor aplica estilos aos elementos .feed-sidebar:hover .feed-nav-item > span, .feed-sidebar:focus-within .feed-nav-item > span. */
+.feed-sidebar:hover .feed-nav-item > span, .feed-sidebar:focus-within .feed-nav-item > span {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: inline. */
+  display: inline;
+}
+/* Este seletor aplica estilos aos elementos .profile-nav img. */
+.profile-nav img {
+  /* Define a largura do elemento. Valor usado: 27px. */
+  width: 27px;
+  /* Define a altura do elemento. Valor usado: 27px. */
+  height: 27px;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define como a imagem se ajusta ao espaço reservado. Valor usado: cover. */
+  object-fit: cover;
+}
+/* Este seletor aplica estilos aos elementos .sidebar-more. */
+.sidebar-more {
+  /* Define o valor da propriedade visual “margin-top”. Valor usado: auto. */
+  margin-top: auto;
+}
+/* Este seletor aplica estilos aos elementos .feed-main. */
+.feed-main {
+  /* Define em quais colunas da grade o item aparece. Valor usado: 2. */
+  grid-column: 2;
+  /* Define a largura do elemento. Valor usado: 100%. */
+  width: 100%;
+  /* Limita a largura máxima do elemento. Valor usado: 630px. */
+  max-width: 630px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 38px 0 48px. */
+  padding: 38px 0 48px;
+}
+/* Este seletor aplica estilos aos elementos .mobile-feed-header. */
+.mobile-feed-header {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: none. */
+  display: none;
+}
+/* Faixa horizontal de stories e seus avatares circulares. */
+/* Este seletor aplica estilos aos elementos .stories. */
+.stories {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: relative. */
+  position: relative;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Define o espaço entre os elementos filhos. Valor usado: 18px. */
+  gap: 18px;
+  /* Define o valor da propriedade visual “overflow-x”. Valor usado: auto. */
+  overflow-x: auto;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 2px 3px 23px. */
+  padding: 2px 3px 23px;
+  /* Define o valor da propriedade visual “scrollbar-width”. Valor usado: none. */
+  scrollbar-width: none;
+}
+/* Este seletor aplica estilos aos elementos .stories::-webkit-scrollbar. */
+.stories::-webkit-scrollbar {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: none. */
+  display: none;
+}
+/* Este seletor aplica estilos aos elementos .story. */
+.story {
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 0 0 76px. */
+  flex: 0 0 76px;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Alinha cada item horizontalmente dentro da grade. Valor usado: center. */
+  justify-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 7px. */
+  gap: 7px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0. */
+  padding: 0;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: inherit. */
+  color: inherit;
+}
+/* Este seletor aplica estilos aos elementos .story-ring. */
+.story-ring {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: relative. */
+  position: relative;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+  display: block;
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 0 0 70px. */
+  flex: 0 0 70px;
+  /* Define a largura do elemento. Valor usado: 70px. */
+  width: 70px;
+  /* Define a altura do elemento. Valor usado: 70px. */
+  height: 70px;
+  /* Mantém uma proporção entre largura e altura. Valor usado: 1. */
+  aspect-ratio: 1;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 3px. */
+  padding: 3px;
+  /* Controla o conteúdo que ultrapassa os limites do elemento. Valor usado: hidden. */
+  overflow: hidden;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define o fundo do elemento. Valor usado: linear-gradient(35deg, #ffd34e, #ff6b35 45%, #df2382 75%, #8e3ce8). */
+  background: linear-gradient(35deg, #ffd34e, #ff6b35 45%, #df2382 75%, #8e3ce8);
+}
+/* Este seletor aplica estilos aos elementos .story-ring img. */
+.story-ring img {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: absolute. */
+  position: absolute;
+  /* Define o valor da propriedade visual “inset”. Valor usado: 3px. */
+  inset: 3px;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+  display: block;
+  /* Define a largura do elemento. Valor usado: calc(100% - 6px). */
+  width: calc(100% - 6px);
+  /* Define a altura do elemento. Valor usado: calc(100% - 6px). */
+  height: calc(100% - 6px);
+  /* Limita a largura máxima do elemento. Valor usado: none. */
+  max-width: none;
+  /* Define como a imagem se ajusta ao espaço reservado. Valor usado: cover. */
+  object-fit: cover;
+  /* Define a borda do elemento. Valor usado: 2px solid var(--feed-bg). */
+  border: 2px solid var(--feed-bg);
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+}
+/* Este seletor aplica estilos aos elementos .story-ring-own. */
+.story-ring-own {
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 3px. */
+  padding: 3px;
+  /* Define o fundo do elemento. Valor usado: #34363b. */
+  background: #34363b;
+}
+/* Este seletor aplica estilos aos elementos .story-ring i. */
+.story-ring i {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: absolute. */
+  position: absolute;
+  /* Define a distância em relação à direita. Valor usado: -1px. */
+  right: -1px;
+  /* Define a distância em relação à base. Valor usado: 0. */
+  bottom: 0;
+  /* Define a largura do elemento. Valor usado: 22px. */
+  width: 22px;
+  /* Define a altura do elemento. Valor usado: 22px. */
+  height: 22px;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+  place-items: center;
+  /* Define a borda do elemento. Valor usado: 2px solid var(--feed-bg). */
+  border: 2px solid var(--feed-bg);
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define o fundo do elemento. Valor usado: #3698ed. */
+  background: #3698ed;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Define o valor da propriedade visual “font-style”. Valor usado: normal. */
+  font-style: normal;
+  /* Define o tamanho do texto. Valor usado: 17px. */
+  font-size: 17px;
+  /* Define a distância vertical entre linhas. Valor usado: 1. */
+  line-height: 1;
+}
+/* Este seletor aplica estilos aos elementos .story-name. */
+.story-name {
+  /* Limita a largura máxima do elemento. Valor usado: 76px. */
+  max-width: 76px;
+  /* Controla o conteúdo que ultrapassa os limites do elemento. Valor usado: hidden. */
+  overflow: hidden;
+  /* Define a cor do texto e dos ícones. Valor usado: #d5d5d7. */
+  color: #d5d5d7;
+  /* Define o tamanho do texto. Valor usado: 11px. */
+  font-size: 11px;
+  /* Controla como indicar texto cortado. Valor usado: ellipsis. */
+  text-overflow: ellipsis;
+  /* Controla como espaços e quebras de linha são tratados. Valor usado: nowrap. */
+  white-space: nowrap;
+}
+/* Este seletor aplica estilos aos elementos .story-next. */
+.story-next {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: absolute. */
+  position: absolute;
+  /* Define a distância em relação ao topo do elemento de referência. Valor usado: 22px. */
+  top: 22px;
+  /* Define a distância em relação à direita. Valor usado: 2px. */
+  right: 2px;
+  /* Define a largura do elemento. Valor usado: 27px. */
+  width: 27px;
+  /* Define a altura do elemento. Valor usado: 27px. */
+  height: 27px;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define o fundo do elemento. Valor usado: #f3f3f3. */
+  background: #f3f3f3;
+  /* Define a cor do texto e dos ícones. Valor usado: #282828. */
+  color: #282828;
+  /* Define o tamanho do texto. Valor usado: 25px. */
+  font-size: 25px;
+  /* Define a distância vertical entre linhas. Valor usado: 20px. */
+  line-height: 20px;
+  /* Adiciona uma sombra. Valor usado: 0 2px 8px #0006. */
+  box-shadow: 0 2px 8px #0006;
+}
+/* Este seletor aplica estilos aos elementos .post-list. */
+.post-list {
+  /* Define a largura do elemento. Valor usado: 100%. */
+  width: 100%;
+  /* Limita a largura máxima do elemento. Valor usado: 490px. */
+  max-width: 490px;
+  /* Define o espaço externo ao redor do elemento. Valor usado: 8px auto 0. */
+  margin: 8px auto 0;
+}
+/* Cartões de publicação, mídia e controles de interação. */
+/* Este seletor aplica estilos aos elementos .post. */
+.post {
+  /* Define o valor da propriedade visual “margin-bottom”. Valor usado: 31px. */
+  margin-bottom: 31px;
+  /* Define o valor da propriedade visual “padding-bottom”. Valor usado: 17px. */
+  padding-bottom: 17px;
+  /* Define a borda inferior. Valor usado: 1px solid var(--feed-line). */
+  border-bottom: 1px solid var(--feed-line);
+}
+/* Este seletor aplica estilos aos elementos .post-header. */
+.post-header {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 10px. */
+  gap: 10px;
+  /* Define a altura mínima para o elemento. Valor usado: 48px. */
+  min-height: 48px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0 2px 11px. */
+  padding: 0 2px 11px;
+}
+/* Este seletor aplica estilos aos elementos .avatar. */
+.avatar {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+  display: block;
+  /* Define a largura do elemento. Valor usado: 35px. */
+  width: 35px;
+  /* Define a altura do elemento. Valor usado: 35px. */
+  height: 35px;
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 0 0 35px. */
+  flex: 0 0 35px;
+  /* Mantém uma proporção entre largura e altura. Valor usado: 1. */
+  aspect-ratio: 1;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define como a imagem se ajusta ao espaço reservado. Valor usado: cover. */
+  object-fit: cover;
+}
+/* Este seletor aplica estilos aos elementos .post-author. */
+.post-author {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o espaço entre os elementos filhos. Valor usado: 3px. */
+  gap: 3px;
+  /* Define a largura mínima do elemento. Valor usado: 0. */
+  min-width: 0;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Este seletor aplica estilos aos elementos .post-author strong, .suggestion-copy strong, .signed-in strong. */
+.post-author strong, .suggestion-copy strong, .signed-in strong {
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Este seletor aplica estilos aos elementos .post-author span, .signed-in span, .suggestion-copy span. */
+.post-author span, .signed-in span, .suggestion-copy span {
+  /* Controla o conteúdo que ultrapassa os limites do elemento. Valor usado: hidden. */
+  overflow: hidden;
+  /* Define a cor do texto e dos ícones. Valor usado: #9c9da3. */
+  color: #9c9da3;
+  /* Define o tamanho do texto. Valor usado: 11px. */
+  font-size: 11px;
+  /* Controla como indicar texto cortado. Valor usado: ellipsis. */
+  text-overflow: ellipsis;
+  /* Controla como espaços e quebras de linha são tratados. Valor usado: nowrap. */
+  white-space: nowrap;
+}
+/* Este seletor aplica estilos aos elementos .post-age. */
+.post-age {
+  /* Define a cor do texto e dos ícones. Valor usado: #93949b. */
+  color: #93949b;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+}
+/* Este seletor aplica estilos aos elementos .icon-button. */
+.icon-button {
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: #eee. */
+  color: #eee;
+}
+/* Este seletor aplica estilos aos elementos .post-more. */
+.post-more {
+  /* Define o valor da propriedade visual “margin-left”. Valor usado: auto. */
+  margin-left: auto;
+  /* Define o espaço entre letras. Valor usado: 2px. */
+  letter-spacing: 2px;
+}
+/* Este seletor aplica estilos aos elementos .post-image. */
+.post-image {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+  display: block;
+  /* Define a largura do elemento. Valor usado: 100%. */
+  width: 100%;
+  /* Limita a altura máxima do elemento. Valor usado: 620px. */
+  max-height: 620px;
+  /* Mantém uma proporção entre largura e altura. Valor usado: 0.86. */
+  aspect-ratio: 0.86;
+  /* Define a borda do elemento. Valor usado: 1px solid #24262a. */
+  border: 1px solid #24262a;
+  /* Arredonda os cantos. Valor usado: 4px. */
+  border-radius: 4px;
+  /* Define o fundo do elemento. Valor usado: #191b1f. */
+  background: #191b1f;
+  /* Define como a imagem se ajusta ao espaço reservado. Valor usado: cover. */
+  object-fit: cover;
+}
+/* Este seletor aplica estilos aos elementos .post-actions. */
+.post-actions {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 13px. */
+  gap: 13px;
+  /* Define o valor da propriedade visual “padding-top”. Valor usado: 10px. */
+  padding-top: 10px;
+}
+/* Este seletor aplica estilos aos elementos .post-actions button. */
+.post-actions button {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+  place-items: center;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0. */
+  padding: 0;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: #f5f5f5. */
+  color: #f5f5f5;
+}
+/* Este seletor aplica estilos aos elementos .post-actions button:hover. */
+.post-actions button:hover {
+  /* Define a cor do texto e dos ícones. Valor usado: #b4b5bb. */
+  color: #b4b5bb;
+}
+/* Este seletor aplica estilos aos elementos .post-actions svg. */
+.post-actions svg {
+  /* Define a largura do elemento. Valor usado: 25px. */
+  width: 25px;
+  /* Define a altura do elemento. Valor usado: 25px. */
+  height: 25px;
+}
+/* Este seletor aplica estilos aos elementos .post-actions .save-action. */
+.post-actions .save-action {
+  /* Define o valor da propriedade visual “margin-left”. Valor usado: auto. */
+  margin-left: auto;
+}
+/* Este seletor aplica estilos aos elementos .post-actions .is-liked. */
+.post-actions .is-liked {
+  /* Define a cor do texto e dos ícones. Valor usado: #ff405e. */
+  color: #ff405e;
+}
+/* Este seletor aplica estilos aos elementos .post-likes. */
+.post-likes {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 8px 0 5px. */
+  margin: 8px 0 5px;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+  /* Define a espessura/peso do texto. Valor usado: 700. */
+  font-weight: 700;
+}
+/* Este seletor aplica estilos aos elementos .post-caption. */
+.post-caption {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 6px. */
+  margin: 0 0 6px;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+  /* Define a distância vertical entre linhas. Valor usado: 1.55. */
+  line-height: 1.55;
+}
+/* Este seletor aplica estilos aos elementos .post-caption strong. */
+.post-caption strong {
+  /* Define o valor da propriedade visual “margin-right”. Valor usado: 4px. */
+  margin-right: 4px;
+}
+/* Este seletor aplica estilos aos elementos .post-comments. */
+.post-comments {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 9px. */
+  margin: 0 0 9px;
+  /* Define a cor do texto e dos ícones. Valor usado: #92939a. */
+  color: #92939a;
+  /* Define o formato do cursor do mouse. Valor usado: pointer. */
+  cursor: pointer;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+}
+/* Este seletor aplica estilos aos elementos .new-comment. */
+.new-comment {
+  /* Define a cor do texto e dos ícones. Valor usado: #e3e3e5. */
+  color: #e3e3e5;
+}
+/* Este seletor aplica estilos aos elementos .comment-form. */
+.comment-form {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 12px. */
+  gap: 12px;
+  /* Define o valor da propriedade visual “padding-top”. Valor usado: 8px. */
+  padding-top: 8px;
+  /* Define a borda superior. Valor usado: 1px solid #23252a. */
+  border-top: 1px solid #23252a;
+}
+/* Este seletor aplica estilos aos elementos .comment-form input. */
+.comment-form input {
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 1. */
+  flex: 1;
+  /* Define a largura mínima do elemento. Valor usado: 0. */
+  min-width: 0;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 2px 0. */
+  padding: 2px 0;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Desenha um contorno externo, usado também no foco acessível. Valor usado: 0. */
+  outline: 0;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: #eee. */
+  color: #eee;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+}
+/* Este seletor aplica estilos aos elementos .comment-form button, .suggestion button, .signed-in button, .suggestion-heading button. */
+.comment-form button, .suggestion button, .signed-in button, .suggestion-heading button {
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: #7fa6ff. */
+  color: #7fa6ff;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+  /* Define a espessura/peso do texto. Valor usado: 700. */
+  font-weight: 700;
+}
+/* Este seletor aplica estilos aos elementos .comment-form button:hover, .suggestion button:hover, .signed-in button:hover. */
+.comment-form button:hover, .suggestion button:hover, .signed-in button:hover {
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+}
+/* Este seletor aplica estilos aos elementos .feed-end. */
+.feed-end {
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 25px 10px. */
+  padding: 25px 10px;
+  /* Define a cor do texto e dos ícones. Valor usado: #aaaab0. */
+  color: #aaaab0;
+  /* Alinha o texto dentro do elemento. Valor usado: center. */
+  text-align: center;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Este seletor aplica estilos aos elementos .feed-end span. */
+.feed-end span {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+  display: block;
+  /* Define o valor da propriedade visual “margin-top”. Valor usado: 8px. */
+  margin-top: 8px;
+  /* Define a cor do texto e dos ícones. Valor usado: #f34085. */
+  color: #f34085;
+  /* Define o tamanho do texto. Valor usado: 21px. */
+  font-size: 21px;
+}
+/* Coluna de sugestões e informações da conta. */
+/* Este seletor aplica estilos aos elementos .feed-right. */
+.feed-right {
+  /* Define em quais colunas da grade o item aparece. Valor usado: 3. */
+  grid-column: 3;
+  /* Define como o elemento participa do posicionamento da página. Valor usado: sticky. */
+  position: sticky;
+  /* Define a distância em relação ao topo do elemento de referência. Valor usado: 0. */
+  top: 0;
+  /* Define o valor da propriedade visual “align-self”. Valor usado: start. */
+  align-self: start;
+  /* Define a largura do elemento. Valor usado: 100%. */
+  width: 100%;
+  /* Limita a largura máxima do elemento. Valor usado: 340px. */
+  max-width: 340px;
+  /* Define o valor da propriedade visual “padding-top”. Valor usado: 56px. */
+  padding-top: 56px;
+}
+/* Este seletor aplica estilos aos elementos .signed-in. */
+.signed-in {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 12px. */
+  gap: 12px;
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 35px. */
+  margin: 0 0 35px;
+}
+/* Este seletor aplica estilos aos elementos .avatar-large. */
+.avatar-large {
+  /* Define a largura do elemento. Valor usado: 43px. */
+  width: 43px;
+  /* Define a altura do elemento. Valor usado: 43px. */
+  height: 43px;
+}
+/* Este seletor aplica estilos aos elementos .signed-in div, .suggestion-copy. */
+.signed-in div, .suggestion-copy {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o espaço entre os elementos filhos. Valor usado: 5px. */
+  gap: 5px;
+  /* Define a largura mínima do elemento. Valor usado: 0. */
+  min-width: 0;
+}
+/* Este seletor aplica estilos aos elementos .signed-in button. */
+.signed-in button {
+  /* Define o valor da propriedade visual “margin-left”. Valor usado: auto. */
+  margin-left: auto;
+}
+/* Este seletor aplica estilos aos elementos .suggestion-heading. */
+.suggestion-heading {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Distribui os elementos no eixo principal do layout. Valor usado: space-between. */
+  justify-content: space-between;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o valor da propriedade visual “margin-bottom”. Valor usado: 16px. */
+  margin-bottom: 16px;
+}
+/* Este seletor aplica estilos aos elementos .suggestion-heading strong. */
+.suggestion-heading strong {
+  /* Define a cor do texto e dos ícones. Valor usado: #b6b7bc. */
+  color: #b6b7bc;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Este seletor aplica estilos aos elementos .suggestion-heading button. */
+.suggestion-heading button {
+  /* Define a cor do texto e dos ícones. Valor usado: #f2f2f2. */
+  color: #f2f2f2;
+}
+/* Este seletor aplica estilos aos elementos .suggestion-list. */
+.suggestion-list {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o espaço entre os elementos filhos. Valor usado: 15px. */
+  gap: 15px;
+}
+/* Este seletor aplica estilos aos elementos .suggestion. */
+.suggestion {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 10px. */
+  gap: 10px;
+}
+/* Este seletor aplica estilos aos elementos .suggestion-copy. */
+.suggestion-copy {
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 1. */
+  flex: 1;
+}
+/* Este seletor aplica estilos aos elementos .suggestion button. */
+.suggestion button {
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 0 0 auto. */
+  flex: 0 0 auto;
+}
+/* Este seletor aplica estilos aos elementos .suggestion button.following. */
+.suggestion button.following {
+  /* Define a cor do texto e dos ícones. Valor usado: #aaa. */
+  color: #aaa;
+}
+/* Este seletor aplica estilos aos elementos .feed-footer. */
+.feed-footer {
+  /* Define o valor da propriedade visual “margin-top”. Valor usado: 39px. */
+  margin-top: 39px;
+  /* Define a cor do texto e dos ícones. Valor usado: #686a71. */
+  color: #686a71;
+  /* Define o tamanho do texto. Valor usado: 10px. */
+  font-size: 10px;
+  /* Define a distância vertical entre linhas. Valor usado: 1.9. */
+  line-height: 1.9;
+}
+/* Este seletor aplica estilos aos elementos .feed-footer p. */
+.feed-footer p {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 14px. */
+  margin: 0 0 14px;
+}
+/* Este seletor aplica estilos aos elementos .feed-toast. */
+.feed-toast {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: fixed. */
+  position: fixed;
+  /* Controla qual elemento fica sobre os outros. Valor usado: 20. */
+  z-index: 20;
+  /* Define a distância em relação à base. Valor usado: 25px. */
+  bottom: 25px;
+  /* Define a distância em relação à esquerda. Valor usado: 50%. */
+  left: 50%;
+  /* Move, gira ou dimensiona o elemento. Valor usado: translateX(-50%). */
+  transform: translateX(-50%);
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 12px 20px. */
+  padding: 12px 20px;
+  /* Define a borda do elemento. Valor usado: 1px solid #373940. */
+  border: 1px solid #373940;
+  /* Arredonda os cantos. Valor usado: 12px. */
+  border-radius: 12px;
+  /* Define o fundo do elemento. Valor usado: #23252b. */
+  background: #23252b;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Adiciona uma sombra. Valor usado: 0 8px 28px #0008. */
+  box-shadow: 0 8px 28px #0008;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Visualizador em tela cheia aberto ao selecionar um story. */
+/* Este seletor aplica estilos aos elementos .story-modal. */
+.story-modal {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: fixed. */
+  position: fixed;
+  /* Controla qual elemento fica sobre os outros. Valor usado: 30. */
+  z-index: 30;
+  /* Define o valor da propriedade visual “inset”. Valor usado: 0. */
+  inset: 0;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+  place-items: center;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 24px. */
+  padding: 24px;
+  /* Define o fundo do elemento. Valor usado: #000d. */
+  background: #000d;
+}
+/* Este seletor aplica estilos aos elementos .story-viewer. */
+.story-viewer {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: relative. */
+  position: relative;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Define a direção dos itens no flexbox. Valor usado: column. */
+  flex-direction: column;
+  /* Define a largura do elemento. Valor usado: min(390px, 90vw). */
+  width: min(390px, 90vw);
+  /* Define a altura do elemento. Valor usado: min(720px, 86vh). */
+  height: min(720px, 86vh);
+  /* Controla o conteúdo que ultrapassa os limites do elemento. Valor usado: hidden. */
+  overflow: hidden;
+  /* Arredonda os cantos. Valor usado: 10px. */
+  border-radius: 10px;
+  /* Define o fundo do elemento. Valor usado: #24252a. */
+  background: #24252a;
+}
+/* Este seletor aplica estilos aos elementos .story-progress. */
+.story-progress {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: absolute. */
+  position: absolute;
+  /* Controla qual elemento fica sobre os outros. Valor usado: 2. */
+  z-index: 2;
+  /* Define a distância em relação ao topo do elemento de referência. Valor usado: 10px. */
+  top: 10px;
+  /* Define a distância em relação à direita. Valor usado: 10px. */
+  right: 10px;
+  /* Define a distância em relação à esquerda. Valor usado: 10px. */
+  left: 10px;
+  /* Define a altura do elemento. Valor usado: 3px. */
+  height: 3px;
+  /* Arredonda os cantos. Valor usado: 9px. */
+  border-radius: 9px;
+  /* Define o fundo do elemento. Valor usado: #ffffff70. */
+  background: #ffffff70;
+}
+/* Este seletor aplica estilos aos elementos .story-progress span. */
+.story-progress span {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+  display: block;
+  /* Define a largura do elemento. Valor usado: 45%. */
+  width: 45%;
+  /* Define a altura do elemento. Valor usado: 100%. */
+  height: 100%;
+  /* Arredonda os cantos. Valor usado: inherit. */
+  border-radius: inherit;
+  /* Define o fundo do elemento. Valor usado: #fff. */
+  background: #fff;
+}
+/* Este seletor aplica estilos aos elementos .story-viewer-user. */
+.story-viewer-user {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: absolute. */
+  position: absolute;
+  /* Controla qual elemento fica sobre os outros. Valor usado: 1. */
+  z-index: 1;
+  /* Define a distância em relação ao topo do elemento de referência. Valor usado: 23px. */
+  top: 23px;
+  /* Define a distância em relação à esquerda. Valor usado: 14px. */
+  left: 14px;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 8px. */
+  gap: 8px;
+  /* Define o valor da propriedade visual “text-shadow”. Valor usado: 0 1px 5px #000. */
+  text-shadow: 0 1px 5px #000;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+}
+/* Este seletor aplica estilos aos elementos .story-viewer-user img. */
+.story-viewer-user img {
+  /* Define a largura do elemento. Valor usado: 30px. */
+  width: 30px;
+  /* Define a altura do elemento. Valor usado: 30px. */
+  height: 30px;
+  /* Define a borda do elemento. Valor usado: 1px solid #fff. */
+  border: 1px solid #fff;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define como a imagem se ajusta ao espaço reservado. Valor usado: cover. */
+  object-fit: cover;
+}
+/* Este seletor aplica estilos aos elementos .story-viewer-user span. */
+.story-viewer-user span {
+  /* Define a cor do texto e dos ícones. Valor usado: #ddd. */
+  color: #ddd;
+}
+/* Este seletor aplica estilos aos elementos .story-viewer-image. */
+.story-viewer-image {
+  /* Define a largura do elemento. Valor usado: 100%. */
+  width: 100%;
+  /* Define a altura do elemento. Valor usado: 100%. */
+  height: 100%;
+  /* Define como a imagem se ajusta ao espaço reservado. Valor usado: cover. */
+  object-fit: cover;
+}
+/* Este seletor aplica estilos aos elementos .story-close. */
+.story-close {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: fixed. */
+  position: fixed;
+  /* Define a distância em relação ao topo do elemento de referência. Valor usado: 25px. */
+  top: 25px;
+  /* Define a distância em relação à direita. Valor usado: 30px. */
+  right: 30px;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Define o tamanho do texto. Valor usado: 36px. */
+  font-size: 36px;
+}
+/* Este seletor aplica estilos aos elementos .story-reply. */
+.story-reply {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: absolute. */
+  position: absolute;
+  /* Define a distância em relação à direita. Valor usado: 14px. */
+  right: 14px;
+  /* Define a distância em relação à base. Valor usado: 15px. */
+  bottom: 15px;
+  /* Define a distância em relação à esquerda. Valor usado: 14px. */
+  left: 14px;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Define o espaço entre os elementos filhos. Valor usado: 12px. */
+  gap: 12px;
+}
+/* Este seletor aplica estilos aos elementos .story-reply input. */
+.story-reply input {
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 1. */
+  flex: 1;
+  /* Define a largura mínima do elemento. Valor usado: 0. */
+  min-width: 0;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 12px 16px. */
+  padding: 12px 16px;
+  /* Define a borda do elemento. Valor usado: 1px solid #ddd. */
+  border: 1px solid #ddd;
+  /* Arredonda os cantos. Valor usado: 24px. */
+  border-radius: 24px;
+  /* Define o fundo do elemento. Valor usado: #0003. */
+  background: #0003;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Desenha um contorno externo, usado também no foco acessível. Valor usado: 0. */
+  outline: 0;
+}
+/* Este seletor aplica estilos aos elementos .story-reply input::placeholder. */
+.story-reply input::placeholder {
+  /* Define a cor do texto e dos ícones. Valor usado: #eee. */
+  color: #eee;
+}
+/* Este seletor aplica estilos aos elementos .story-reply button. */
+.story-reply button {
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Define o tamanho do texto. Valor usado: 25px. */
+  font-size: 25px;
+}
+/* Ajustes de layout para telas menores. */
+@media (max-width: 1120px) {
+  .feed-app {
+    /* Define as colunas do layout em grade. Valor usado: 76px minmax(450px, 630px). */
+    grid-template-columns: 76px minmax(450px, 630px);
+    /* Define o espaço entre os elementos filhos. Valor usado: 34px. */
+    gap: 34px;
+    /* Define o valor da propriedade visual “padding-right”. Valor usado: 22px. */
+    padding-right: 22px;
+  }
+  .feed-sidebar {
+    /* Define a largura mínima do elemento. Valor usado: 0. */
+    min-width: 0;
+    /* Alinha os itens no eixo transversal do layout. Valor usado: flex-start. */
+    align-items: flex-start;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 27px 10px 20px. */
+    padding: 27px 10px 20px;
+  }
+  .feed-sidebar:hover, .feed-sidebar:focus-within {
+    /* Alinha os itens no eixo transversal do layout. Valor usado: flex-start. */
+    align-items: flex-start;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 27px 18px 20px 26px. */
+    padding: 27px 18px 20px 26px;
+  }
+  .feed-sidebar:not(:hover):not(:focus-within) .feed-wordmark {
+    /* Define o tamanho do texto. Valor usado: 0. */
+    font-size: 0;
+    /* Define o espaço entre letras. Valor usado: 0. */
+    letter-spacing: 0;
+  }
+  .feed-sidebar:not(:hover):not(:focus-within) .feed-wordmark span {
+    /* Define o tamanho do texto. Valor usado: 24px. */
+    font-size: 24px;
+  }
+  .feed-nav {
+    /* Define o valor da propriedade visual “margin-top”. Valor usado: 38px. */
+    margin-top: 38px;
+  }
+  .feed-right {
+    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: none. */
+    display: none;
+  }
+}
+/* Ajustes de layout para telas menores. */
+@media (max-width: 650px) {
+  .feed-app {
+    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+    display: block;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0. */
+    padding: 0;
+  }
+  .feed-sidebar {
+    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: none. */
+    display: none;
+  }
+  .feed-main {
+    /* Define em quais colunas da grade o item aparece. Valor usado: auto. */
+    grid-column: auto;
+    /* Limita a largura máxima do elemento. Valor usado: none. */
+    max-width: none;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0 0 55px. */
+    padding: 0 0 55px;
+  }
+  .mobile-feed-header {
+    /* Define como o elemento participa do posicionamento da página. Valor usado: sticky. */
+    position: sticky;
+    /* Controla qual elemento fica sobre os outros. Valor usado: 5. */
+    z-index: 5;
+    /* Define a distância em relação ao topo do elemento de referência. Valor usado: 0. */
+    top: 0;
+    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+    display: flex;
+    /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+    align-items: center;
+    /* Distribui os elementos no eixo principal do layout. Valor usado: space-between. */
+    justify-content: space-between;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 12px 16px. */
+    padding: 12px 16px;
+    /* Define a borda inferior. Valor usado: 1px solid #25272c. */
+    border-bottom: 1px solid #25272c;
+    /* Define o fundo do elemento. Valor usado: #0d0f12ed. */
+    background: #0d0f12ed;
+    /* Aplica um efeito ao conteúdo atrás do elemento. Valor usado: blur(12px). */
+    backdrop-filter: blur(12px);
+  }
+  .mobile-feed-header .feed-wordmark {
+    /* Define o tamanho do texto. Valor usado: 25px. */
+    font-size: 25px;
+  }
+  .mobile-feed-header .feed-wordmark span {
+    /* Define o tamanho do texto. Valor usado: 15px. */
+    font-size: 15px;
+  }
+  .mobile-feed-header button {
+    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+    display: grid;
+    /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+    place-items: center;
+    /* Define a borda do elemento. Valor usado: 0. */
+    border: 0;
+    /* Define o fundo do elemento. Valor usado: none. */
+    background: none;
+    /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+    color: #fff;
+  }
+  .stories {
+    /* Define o espaço entre os elementos filhos. Valor usado: 11px. */
+    gap: 11px;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 13px 14px 17px. */
+    padding: 13px 14px 17px;
+    /* Define a borda inferior. Valor usado: 1px solid #25272c. */
+    border-bottom: 1px solid #25272c;
+  }
+  .story {
+    /* Define o valor da propriedade visual “flex-basis”. Valor usado: 68px. */
+    flex-basis: 68px;
+  }
+  .story-ring {
+    /* Define o valor da propriedade visual “flex-basis”. Valor usado: 63px. */
+    flex-basis: 63px;
+    /* Define a largura do elemento. Valor usado: 63px. */
+    width: 63px;
+    /* Define a altura do elemento. Valor usado: 63px. */
+    height: 63px;
+  }
+  .story-next {
+    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: none. */
+    display: none;
+  }
+  .post-list {
+    /* Limita a largura máxima do elemento. Valor usado: none. */
+    max-width: none;
+    /* Define o espaço externo ao redor do elemento. Valor usado: 0. */
+    margin: 0;
+  }
+  .post {
+    /* Define o valor da propriedade visual “margin-bottom”. Valor usado: 18px. */
+    margin-bottom: 18px;
+    /* Define o valor da propriedade visual “padding-bottom”. Valor usado: 15px. */
+    padding-bottom: 15px;
+    /* Define a borda inferior. Valor usado: 1px solid #25272c. */
+    border-bottom: 1px solid #25272c;
+  }
+  .post-header {
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 9px 12px. */
+    padding: 9px 12px;
+  }
+  .post-image {
+    /* Limita a altura máxima do elemento. Valor usado: 75vh. */
+    max-height: 75vh;
+    /* Mantém uma proporção entre largura e altura. Valor usado: 0.9. */
+    aspect-ratio: 0.9;
+    /* Define a borda do elemento. Valor usado: 0. */
+    border: 0;
+    /* Arredonda os cantos. Valor usado: 0. */
+    border-radius: 0;
+  }
+  .post-actions, .post-likes, .post-caption, .post-comments, .comment-form {
+    /* Define o valor da propriedade visual “margin-right”. Valor usado: 13px. */
+    margin-right: 13px;
+    /* Define o valor da propriedade visual “margin-left”. Valor usado: 13px. */
+    margin-left: 13px;
+  }
+  .post-actions {
+    /* Define o valor da propriedade visual “padding-top”. Valor usado: 10px. */
+    padding-top: 10px;
+  }
+  .comment-form {
+    /* Define o valor da propriedade visual “padding-top”. Valor usado: 10px. */
+    padding-top: 10px;
+  }
+}
+/* Este seletor aplica estilos aos elementos .login-footer a:hover. */
+.login-footer a:hover {
+  /* Controla sublinhados e outras decorações do texto. Valor usado: underline. */
+  text-decoration: underline;
+}
+/* Ajustes de layout para telas menores. */
+@media (max-width: 960px) {
+  .login-page {
+    /* Define as colunas do layout em grade. Valor usado: 1fr. */
+    grid-template-columns: 1fr;
+  }
+  .login-hero {
+    /* Define a altura mínima para o elemento. Valor usado: 58svh. */
+    min-height: 58svh;
+    /* Define o valor da propriedade visual “padding-top”. Valor usado: 88px. */
+    padding-top: 88px;
+  }
+  .login-panel {
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 32px 24px 48px. */
+    padding: 32px 24px 48px;
+    /* Define a borda esquerda. Valor usado: 0. */
+    border-left: 0;
+    /* Define a borda superior. Valor usado: 1px solid #222. */
+    border-top: 1px solid #222;
+  }
+  .login-form {
+    /* Limita a largura máxima do elemento. Valor usado: none. */
+    max-width: none;
+  }
+}
