@@ -12,26 +12,38 @@
 }
 
 .feed-sidebar {
-  position: sticky;
+  position: fixed;
+  z-index: 25;
+  left: 0;
   top: 0;
   height: 100vh;
-  min-width: 220px;
-  padding: 34px 18px 22px 26px;
+  width: 76px;
+  min-width: 0;
+  padding: 34px 10px 22px;
   border-right: 1px solid var(--feed-line);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  background: var(--feed-bg);
+  transition: width .2s ease, padding .2s ease, box-shadow .2s ease;
 }
 
 .feed-wordmark { display: inline-flex; align-items: center; gap: 7px; width: fit-content; color: #fff; font-family: Georgia, serif; font-size: 29px; font-weight: 700; letter-spacing: -1.6px; }
 .feed-wordmark span { color: #f34085; font-family: sans-serif; font-size: 17px; }
-.feed-nav { display: grid; gap: 8px; margin-top: 40px; }
+.feed-sidebar:not(:hover):not(:focus-within) .feed-wordmark { font-size: 0; letter-spacing: 0; }
+.feed-nav { display: grid; gap: 8px; width: 100%; margin-top: 40px; }
 .feed-nav-item { display: flex; align-items: center; gap: 16px; width: 100%; min-height: 50px; padding: 10px 12px; border: 0; border-radius: 10px; background: transparent; color: #f2f2f2; text-align: left; font-size: 15px; transition: background .16s, transform .16s; }
 .feed-nav-item:hover { background: #202227; transform: translateX(2px); }
 .feed-nav-item.active span { font-weight: 700; }
 .feed-nav-item svg { flex: 0 0 auto; width: 25px; height: 25px; }
+.feed-sidebar:not(:hover):not(:focus-within) .feed-nav-item { justify-content: center; padding-right: 8px; padding-left: 8px; }
+.feed-sidebar:not(:hover):not(:focus-within) .feed-nav-item > span { display: none; }
+.feed-sidebar:hover, .feed-sidebar:focus-within { width: 245px; padding-right: 18px; padding-left: 26px; box-shadow: 12px 0 28px #0005; }
+.feed-sidebar:hover .feed-nav-item, .feed-sidebar:focus-within .feed-nav-item { justify-content: flex-start; padding-right: 12px; padding-left: 12px; }
+.feed-sidebar:hover .feed-nav-item > span, .feed-sidebar:focus-within .feed-nav-item > span { display: inline; }
 .profile-nav img { width: 27px; height: 27px; border-radius: 50%; object-fit: cover; }
 .sidebar-more { margin-top: auto; }
-.feed-main { width: 100%; max-width: 630px; padding: 38px 0 48px; }
+.feed-main { grid-column: 2; width: 100%; max-width: 630px; padding: 38px 0 48px; }
 .mobile-feed-header { display: none; }
 .stories { position: relative; display: flex; gap: 18px; overflow-x: auto; padding: 2px 3px 23px; scrollbar-width: none; }
 .stories::-webkit-scrollbar { display: none; }
@@ -70,7 +82,7 @@
 .comment-form button:hover, .suggestion button:hover, .signed-in button:hover { color: #fff; }
 .feed-end { padding: 25px 10px; color: #aaaab0; text-align: center; font-size: 13px; }
 .feed-end span { display: block; margin-top: 8px; color: #f34085; font-size: 21px; }
-.feed-right { position: sticky; top: 0; align-self: start; width: 100%; max-width: 340px; padding-top: 56px; }
+.feed-right { grid-column: 3; position: sticky; top: 0; align-self: start; width: 100%; max-width: 340px; padding-top: 56px; }
 .signed-in { display: flex; align-items: center; gap: 12px; margin: 0 0 35px; }
 .avatar-large { width: 43px; height: 43px; }
 .signed-in div, .suggestion-copy { display: grid; gap: 5px; min-width: 0; }
@@ -102,19 +114,18 @@
 
 @media (max-width: 1120px) {
   .feed-app { grid-template-columns: 76px minmax(450px, 630px); gap: 34px; padding-right: 22px; }
-  .feed-sidebar { min-width: 76px; align-items: center; padding: 27px 10px 20px; }
-  .feed-wordmark { font-size: 0; letter-spacing: 0; }
-  .feed-wordmark span { font-size: 24px; }
-  .feed-nav-item { justify-content: center; padding: 10px; }
-  .feed-nav-item span { display: none; }
-  .feed-nav { width: 100%; margin-top: 38px; }
+  .feed-sidebar { min-width: 0; align-items: flex-start; padding: 27px 10px 20px; }
+  .feed-sidebar:hover, .feed-sidebar:focus-within { align-items: flex-start; padding: 27px 18px 20px 26px; }
+  .feed-sidebar:not(:hover):not(:focus-within) .feed-wordmark { font-size: 0; letter-spacing: 0; }
+  .feed-sidebar:not(:hover):not(:focus-within) .feed-wordmark span { font-size: 24px; }
+  .feed-nav { margin-top: 38px; }
   .feed-right { display: none; }
 }
 
 @media (max-width: 650px) {
   .feed-app { display: block; padding: 0; }
   .feed-sidebar { display: none; }
-  .feed-main { max-width: none; padding: 0 0 55px; }
+  .feed-main { grid-column: auto; max-width: none; padding: 0 0 55px; }
   .mobile-feed-header { position: sticky; z-index: 5; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #25272c; background: #0d0f12ed; backdrop-filter: blur(12px); }
   .mobile-feed-header .feed-wordmark { font-size: 25px; }
   .mobile-feed-header .feed-wordmark span { font-size: 15px; }

@@ -24,7 +24,7 @@ function ProfileIcon({ name }) {
   return <svg className="profile-side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{shapes[name]}</svg>
 }
 
-export default function ProfilePage({ onHome, onLogout }) {
+export default function ProfilePage({ onHome, onLogout, onSettings }) {
   const [username, setUsername] = useState('abion_lorran')
   const [displayName, setDisplayName] = useState('Jess7x')
   const [bio, setBio] = useState('')
@@ -34,6 +34,7 @@ export default function ProfilePage({ onHome, onLogout }) {
   const [draftUsername, setDraftUsername] = useState(username)
   const [draftBio, setDraftBio] = useState(bio)
   const [notice, setNotice] = useState('')
+  const [showSettingsMenu, setShowSettingsMenu] = useState(false)
 
   function saveProfile(event) {
     event.preventDefault()
@@ -61,11 +62,22 @@ export default function ProfilePage({ onHome, onLogout }) {
       <button className="feed-nav-item sidebar-more" onClick={onLogout}><ProfileIcon name="menu"/><span>Sair / Mais</span></button>
     </aside>
     <main className="profile-main">
-      <header className="profile-mobile-header"><span className="profile-mobile-name">{username}</span><button onClick={() => setModal('settings')} aria-label="Configurações"><span className="profile-gear">⚙</span></button></header>
+      <header className="profile-mobile-header"><span className="profile-mobile-name">{username}</span><button onClick={() => onSettings('privacy')} aria-label="Configurações"><span className="profile-gear">⚙</span></button></header>
       <section className="profile-summary">
         <div className="profile-avatar-wrap"><div className="profile-note">Nota...</div><img className="profile-avatar" src={PROFILE_IMAGE} alt={`Foto de perfil de ${username}`}/></div>
         <div className="profile-info">
-          <div className="profile-title"><h1>{username}</h1><button className="profile-settings" aria-label="Configurações" onClick={() => setModal('settings')}>⚙</button></div>
+          <div className="profile-title"><h1>{username}</h1><div className="profile-settings-control">
+            <button className="profile-settings" aria-label="Abrir menu de configurações" aria-expanded={showSettingsMenu} onClick={() => setShowSettingsMenu(value => !value)}>⚙</button>
+            {showSettingsMenu && <div className="profile-settings-menu" role="menu">
+              <button role="menuitem" onClick={() => onSettings('apps')}>Apps e sites</button>
+              <button role="menuitem" onClick={() => onSettings('qr')}>QR code</button>
+              <button role="menuitem" onClick={() => onSettings('notifications')}>Notificações</button>
+              <button role="menuitem" onClick={() => onSettings('privacy')}>Configurações e privacidade</button>
+              <button role="menuitem" onClick={() => onSettings('supervision')}>Supervisão</button>
+              <button role="menuitem" onClick={() => onSettings('login')}>Atividade de login</button>
+              <button role="menuitem" onClick={onLogout}>Sair</button>
+            </div>}
+          </div></div>
           <p className="profile-display-name">{displayName}</p>
           <div className="profile-stats"><span><strong>0</strong> posts</span><button onClick={() => setModal('followers')}><strong>19</strong> seguidores</button><button onClick={() => setModal('following')}><strong>1.420</strong> seguindo</button></div>
           {bio && <p className="profile-bio">{bio}</p>}
