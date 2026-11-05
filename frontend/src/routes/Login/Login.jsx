@@ -1,12 +1,19 @@
 import { useMemo, useState } from 'react'
-import './LoginPage.css'
+import CardForms from '../../components/CardForms/CardForms.jsx'
+import Footer from '../../components/Footer/Footer.jsx'
+import './Login.css'
 
+// Imagens decorativas usadas na composição visual da tela de entrada.
 const PHOTOS = {
+  // Imagem decorativa colocada à esquerda da composição.
   left: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=400&q=80',
+  // Imagem principal colocada no centro da composição.
   center: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80',
+  // Imagem decorativa colocada à direita da composição.
   right: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80',
 }
 
+// Desenha a marca com SVG para não depender de uma imagem externa.
 function Logo() {
   return (
     <svg className="brand-logo" viewBox="0 0 48 48" aria-hidden="true">
@@ -25,45 +32,65 @@ function Logo() {
   )
 }
 
+// Tela inicial: alterna entre entrar e criar conta; a autenticação real
+// será conectada ao backend posteriormente.
 function LoginPage({ onLogin }) {
+  // Guarda se o formulário está no modo de login ou cadastro.
   const [mode, setMode] = useState('login')
+  // Guarda o email, usuário ou telefone digitado.
   const [identifier, setIdentifier] = useState('')
+  // Guarda a senha digitada no formulário.
   const [password, setPassword] = useState('')
+  // Guarda o nome digitado durante o cadastro.
   const [name, setName] = useState('')
+  // Guarda a mensagem de validação que será mostrada.
   const [error, setError] = useState('')
+  // Guarda uma confirmação ou informação para mostrar no formulário.
   const [message, setMessage] = useState('')
 
+  // Só habilita o envio depois que os campos básicos estiverem preenchidos.
   const canSubmit = useMemo(() => {
+    // Verifica a condição entre parênteses e executa o bloco seguinte quando ela é verdadeira.
     if (mode === 'signup' && name.trim().length < 2) return false
     return identifier.trim().length > 3 && password.length >= 6
   }, [identifier, password, name, mode])
 
+  // Valida o formulário e encaminha para o feed no modo de demonstração.
   function handleSubmit(event) {
+    // Impede o comportamento padrão do navegador (como recarregar a página ao enviar um formulário).
     event.preventDefault()
+    // Limpa ou define a mensagem de erro do formulário.
     setError('')
+    // Limpa ou define a mensagem informativa do formulário.
     setMessage('')
 
+    // Verifica a condição entre parênteses e executa o bloco seguinte quando ela é verdadeira.
     if (!canSubmit) {
+      // Limpa ou define a mensagem de erro do formulário.
       setError('Preencha os campos corretamente. A senha precisa ter pelo menos 6 caracteres.')
       return
     }
 
+    // Verifica a condição entre parênteses e executa o bloco seguinte quando ela é verdadeira.
     if (mode === 'login') {
       onLogin()
       return
     }
 
+    // Limpa ou define a mensagem informativa do formulário.
     setMessage('Conta montada no frontend. Vamos gravar isso no backend depois.')
   }
 
   return (
     <main className="login-page">
+      {/* Apresentação visual da marca e do propósito do aplicativo. */}
       <section className="login-hero" aria-label="Apresentação">
         <Logo />
         <h1>
           Veja momentos do dia a dia dos
           <br />
-          seus <span>amigos próximos</span>.
+          seus 
+          <span>amigos próximos</span>.
         </h1>
 
         <div className="photo-stack" aria-hidden="true">
@@ -87,93 +114,18 @@ function LoginPage({ onLogin }) {
         </div>
       </section>
 
+      {/* Formulário e ações da conta ficam no painel lateral. */}
       <section className="login-panel">
-        <h2>{mode === 'login' ? 'Entrar' : 'Criar nova conta'}</h2>
-
-        <form className="login-form" onSubmit={handleSubmit}>
-          {mode === 'signup' && (
-            <div className="field">
-              <input
-                id="name"
-                type="text"
-                value={name}
-                placeholder=" "
-                autoComplete="name"
-                onChange={(event) => setName(event.target.value)}
-              />
-              <label htmlFor="name">Nome completo</label>
-            </div>
-          )}
-
-          <div className="field">
-            <input
-              id="identifier"
-              type="text"
-              value={identifier}
-              placeholder=" "
-              autoComplete="username"
-              onChange={(event) => setIdentifier(event.target.value)}
-            />
-            <label htmlFor="identifier">Número de celular, nome de usuário ou email</label>
-          </div>
-
-          <div className="field">
-            <input
-              id="password"
-              type="password"
-              value={password}
-              placeholder=" "
-              autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-            <label htmlFor="password">Senha</label>
-          </div>
-
-          {error && <p className="login-error">{error}</p>}
-          {message && <p className="login-error" style={{ color: '#7dcea0' }}>{message}</p>}
-
-          <button className="btn btn-primary" type="submit" disabled={!canSubmit}>
-            {mode === 'login' ? 'Entrar' : 'Cadastrar'}
-          </button>
-
-          {mode === 'login' && (
-            <button className="forgot" type="button" onClick={() => setMessage('Recuperação de senha entra depois, com o backend.')}>
-              Esqueceu a senha?
-            </button>
-          )}
-
-          <div className="divider" />
-
-          <button className="btn btn-ghost" type="button">
-            <span className="facebook-mark">f</span>
-            Entrar com Facebook
-          </button>
-
-          <button
-            className="btn btn-outline"
-            type="button"
-            onClick={() => {
-              setError('')
-              setMessage('')
-              setMode(mode === 'login' ? 'signup' : 'login')
-            }}
-          >
-            {mode === 'login' ? 'Criar nova conta' : 'Já tenho uma conta'}
-          </button>
-        </form>
+        <CardForms mode={mode} setMode={setMode} identifier={identifier} setIdentifier={setIdentifier}
+          password={password} setPassword={setPassword} name={name} setName={setName} error={error}
+          message={message} canSubmit={canSubmit} handleSubmit={handleSubmit}
+          setError={setError} setMessage={setMessage}/>
 
         <p className="meta-mark">∞ Momentos</p>
       </section>
 
-      <footer className="login-footer">
-        <a href="#sobre">Sobre</a>
-        <a href="#ajuda">Ajuda</a>
-        <a href="#api">API</a>
-        <a href="#privacidade">Privacidade</a>
-        <a href="#termos">Termos</a>
-        <a href="#localizacoes">Localizações</a>
-        <span>© {new Date().getFullYear()} Projeto final</span>
-      </footer>
+      {/* Links informativos e identificação do projeto. */}
+      <Footer/>
     </main>
   )
 }

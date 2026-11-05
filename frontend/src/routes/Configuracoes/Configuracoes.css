@@ -1,0 +1,952 @@
+
+/* Configurações: navegação das seções, formulários, controles e layout responsivo. */
+/* Este seletor aplica estilos aos elementos .settings-page. */
+.settings-page {
+  /* Define a altura mínima para o elemento. Valor usado: 100vh. */
+  min-height: 100vh;
+  /* Define o fundo do elemento. Valor usado: #0d0f12. */
+  background: #0d0f12;
+  /* Define a cor do texto e dos ícones. Valor usado: #f4f4f5. */
+  color: #f4f4f5;
+}
+/* Barra superior com a marca e o caminho de retorno. */
+/* Este seletor aplica estilos aos elementos .settings-header. */
+.settings-header {
+  /* Define a altura do elemento. Valor usado: 76px. */
+  height: 76px;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Distribui os elementos no eixo principal do layout. Valor usado: space-between. */
+  justify-content: space-between;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0 5vw. */
+  padding: 0 5vw;
+  /* Define a borda inferior. Valor usado: 1px solid #292c31. */
+  border-bottom: 1px solid #292c31;
+}
+/* Este seletor aplica estilos aos elementos .settings-wordmark. */
+.settings-wordmark {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: inline-flex. */
+  display: inline-flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 6px. */
+  gap: 6px;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Define o valor da propriedade visual “font”. Valor usado: 700 27px Georgia, serif. */
+  font: 700 27px Georgia, serif;
+  /* Define o espaço entre letras. Valor usado: -1.5px. */
+  letter-spacing: -1.5px;
+}
+/* Este seletor aplica estilos aos elementos .settings-wordmark span. */
+.settings-wordmark span {
+  /* Define a cor do texto e dos ícones. Valor usado: #f34085. */
+  color: #f34085;
+  /* Define o valor da propriedade visual “font”. Valor usado: 16px sans-serif. */
+  font: 16px sans-serif;
+}
+/* Este seletor aplica estilos aos elementos .settings-back. */
+.settings-back {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 9px. */
+  gap: 9px;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: #bbbcc2. */
+  color: #bbbcc2;
+  /* Define o tamanho do texto. Valor usado: 14px. */
+  font-size: 14px;
+}
+/* Este seletor aplica estilos aos elementos .settings-back:hover. */
+.settings-back:hover {
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+}
+/* Este seletor aplica estilos aos elementos .settings-back:first-letter. */
+.settings-back:first-letter {
+  /* Define o tamanho do texto. Valor usado: 22px. */
+  font-size: 22px;
+}
+/* Coloca a navegação lateral ao lado do conteúdo selecionado. */
+/* Este seletor aplica estilos aos elementos .settings-layout. */
+.settings-layout {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define as colunas do layout em grade. Valor usado: 290px minmax(0, 760px). */
+  grid-template-columns: 290px minmax(0, 760px);
+  /* Distribui os elementos no eixo principal do layout. Valor usado: center. */
+  justify-content: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 42px. */
+  gap: 42px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 48px 28px 80px. */
+  padding: 48px 28px 80px;
+}
+/* Lista de seções e indicação da seção atual. */
+/* Este seletor aplica estilos aos elementos .settings-nav. */
+.settings-nav {
+  /* Define o valor da propriedade visual “padding-right”. Valor usado: 23px. */
+  padding-right: 23px;
+  /* Define a borda direita. Valor usado: 1px solid #292c31. */
+  border-right: 1px solid #292c31;
+}
+/* Este seletor aplica estilos aos elementos .settings-nav h1. */
+.settings-nav h1 {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 8px. */
+  margin: 0 0 8px;
+  /* Define o tamanho do texto. Valor usado: 24px. */
+  font-size: 24px;
+}
+/* Este seletor aplica estilos aos elementos .settings-nav > p. */
+.settings-nav > p {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 25px. */
+  margin: 0 0 25px;
+  /* Define a cor do texto e dos ícones. Valor usado: #9b9da4. */
+  color: #9b9da4;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+  /* Define a distância vertical entre linhas. Valor usado: 1.5. */
+  line-height: 1.5;
+}
+/* Este seletor aplica estilos aos elementos .settings-nav nav. */
+.settings-nav nav {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o espaço entre os elementos filhos. Valor usado: 4px. */
+  gap: 4px;
+}
+/* Este seletor aplica estilos aos elementos .settings-nav nav button. */
+.settings-nav nav button {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 12px. */
+  gap: 12px;
+  /* Define a altura mínima para o elemento. Valor usado: 44px. */
+  min-height: 44px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 8px 11px. */
+  padding: 8px 11px;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Arredonda os cantos. Valor usado: 9px. */
+  border-radius: 9px;
+  /* Define o fundo do elemento. Valor usado: transparent. */
+  background: transparent;
+  /* Define a cor do texto e dos ícones. Valor usado: #c6c7cc. */
+  color: #c6c7cc;
+  /* Alinha o texto dentro do elemento. Valor usado: left. */
+  text-align: left;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Este seletor aplica estilos aos elementos .settings-nav nav button:hover. */
+.settings-nav nav button:hover {
+  /* Define o fundo do elemento. Valor usado: #1a1c21. */
+  background: #1a1c21;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+}
+/* Este seletor aplica estilos aos elementos .settings-nav nav button.selected. */
+.settings-nav nav button.selected {
+  /* Define o fundo do elemento. Valor usado: #24262c. */
+  background: #24262c;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Define a espessura/peso do texto. Valor usado: 700. */
+  font-weight: 700;
+}
+/* Este seletor aplica estilos aos elementos .settings-nav-icon. */
+.settings-nav-icon {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+  place-items: center;
+  /* Define a largura do elemento. Valor usado: 23px. */
+  width: 23px;
+  /* Define a altura do elemento. Valor usado: 23px. */
+  height: 23px;
+  /* Define a cor do texto e dos ícones. Valor usado: #e6e7e9. */
+  color: #e6e7e9;
+  /* Define o tamanho do texto. Valor usado: 19px. */
+  font-size: 19px;
+}
+/* Este seletor aplica estilos aos elementos .settings-icon. */
+.settings-icon {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+  display: block;
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 0 0 auto. */
+  flex: 0 0 auto;
+}
+/* Este seletor aplica estilos aos elementos .settings-nav nav button.settings-logout. */
+.settings-nav nav button.settings-logout {
+  /* Define o valor da propriedade visual “margin-top”. Valor usado: 14px. */
+  margin-top: 14px;
+  /* Define a borda superior. Valor usado: 1px solid #292c31. */
+  border-top: 1px solid #292c31;
+  /* Arredonda os cantos. Valor usado: 0. */
+  border-radius: 0;
+  /* Define o valor da propriedade visual “padding-top”. Valor usado: 18px. */
+  padding-top: 18px;
+}
+/* Área onde cada painel de configurações é exibido. */
+/* Este seletor aplica estilos aos elementos .settings-content. */
+.settings-content {
+  /* Define a largura mínima do elemento. Valor usado: 0. */
+  min-width: 0;
+}
+/* Este seletor aplica estilos aos elementos .settings-content-heading. */
+.settings-content-heading {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 16px. */
+  gap: 16px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 7px 0 24px. */
+  padding: 7px 0 24px;
+  /* Define a borda inferior. Valor usado: 1px solid #292c31. */
+  border-bottom: 1px solid #292c31;
+}
+/* Este seletor aplica estilos aos elementos .settings-content-heading > span. */
+.settings-content-heading > span {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+  place-items: center;
+  /* Define a largura do elemento. Valor usado: 48px. */
+  width: 48px;
+  /* Define a altura do elemento. Valor usado: 48px. */
+  height: 48px;
+  /* Arredonda os cantos. Valor usado: 13px. */
+  border-radius: 13px;
+  /* Define o fundo do elemento. Valor usado: #23252b. */
+  background: #23252b;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+}
+/* Este seletor aplica estilos aos elementos .settings-content-heading p. */
+.settings-content-heading p {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 4px. */
+  margin: 0 0 4px;
+  /* Define a cor do texto e dos ícones. Valor usado: #92949c. */
+  color: #92949c;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+}
+/* Este seletor aplica estilos aos elementos .settings-content-heading h2. */
+.settings-content-heading h2 {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0. */
+  margin: 0;
+  /* Define o tamanho do texto. Valor usado: 20px. */
+  font-size: 20px;
+}
+/* Este seletor aplica estilos aos elementos .settings-section. */
+.settings-section {
+  /* Define o valor da propriedade visual “padding-top”. Valor usado: 25px. */
+  padding-top: 25px;
+}
+/* Este seletor aplica estilos aos elementos .settings-section h3. */
+.settings-section h3 {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 7px. */
+  margin: 0 0 7px;
+  /* Define o tamanho do texto. Valor usado: 18px. */
+  font-size: 18px;
+}
+/* Este seletor aplica estilos aos elementos .settings-section > p. */
+.settings-section > p {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0 0 23px. */
+  margin: 0 0 23px;
+  /* Define a cor do texto e dos ícones. Valor usado: #9b9da4. */
+  color: #9b9da4;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+  /* Define a distância vertical entre linhas. Valor usado: 1.55. */
+  line-height: 1.55;
+}
+/* Preferências apresentadas em linhas com interruptores. */
+/* Este seletor aplica estilos aos elementos .setting-row. */
+.setting-row {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Distribui os elementos no eixo principal do layout. Valor usado: space-between. */
+  justify-content: space-between;
+  /* Define o espaço entre os elementos filhos. Valor usado: 24px. */
+  gap: 24px;
+  /* Define a altura mínima para o elemento. Valor usado: 76px. */
+  min-height: 76px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 16px 0. */
+  padding: 16px 0;
+  /* Define a borda superior. Valor usado: 1px solid #292c31. */
+  border-top: 1px solid #292c31;
+}
+/* Este seletor aplica estilos aos elementos .setting-row strong, .login-session strong, .supervision-card strong. */
+.setting-row strong, .login-session strong, .supervision-card strong {
+  /* Define o tamanho do texto. Valor usado: 14px. */
+  font-size: 14px;
+}
+/* Este seletor aplica estilos aos elementos .setting-row p, .login-session p, .supervision-card p. */
+.setting-row p, .login-session p, .supervision-card p {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 5px 0 0. */
+  margin: 5px 0 0;
+  /* Define a cor do texto e dos ícones. Valor usado: #9b9da4. */
+  color: #9b9da4;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+  /* Define a distância vertical entre linhas. Valor usado: 1.45. */
+  line-height: 1.45;
+}
+/* Este seletor aplica estilos aos elementos .settings-toggle. */
+.settings-toggle {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: relative. */
+  position: relative;
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 0 0 42px. */
+  flex: 0 0 42px;
+  /* Define a largura do elemento. Valor usado: 42px. */
+  width: 42px;
+  /* Define a altura do elemento. Valor usado: 24px. */
+  height: 24px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 3px. */
+  padding: 3px;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Arredonda os cantos. Valor usado: 14px. */
+  border-radius: 14px;
+  /* Define o fundo do elemento. Valor usado: #555861. */
+  background: #555861;
+  /* Suaviza a mudança entre estados visuais. Valor usado: background .18s. */
+  transition: background .18s;
+}
+/* Este seletor aplica estilos aos elementos .settings-toggle span. */
+.settings-toggle span {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+  display: block;
+  /* Define a largura do elemento. Valor usado: 18px. */
+  width: 18px;
+  /* Define a altura do elemento. Valor usado: 18px. */
+  height: 18px;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define o fundo do elemento. Valor usado: #fff. */
+  background: #fff;
+  /* Suaviza a mudança entre estados visuais. Valor usado: transform .18s. */
+  transition: transform .18s;
+}
+/* Este seletor aplica estilos aos elementos .settings-toggle.on. */
+.settings-toggle.on {
+  /* Define o fundo do elemento. Valor usado: #557bea. */
+  background: #557bea;
+}
+/* Este seletor aplica estilos aos elementos .settings-toggle.on span. */
+.settings-toggle.on span {
+  /* Move, gira ou dimensiona o elemento. Valor usado: translateX(18px). */
+  transform: translateX(18px);
+}
+/* Este seletor aplica estilos aos elementos .settings-info. */
+.settings-info {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o espaço entre os elementos filhos. Valor usado: 6px. */
+  gap: 6px;
+  /* Define o valor da propriedade visual “margin-top”. Valor usado: 24px. */
+  margin-top: 24px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 16px. */
+  padding: 16px;
+  /* Define a borda do elemento. Valor usado: 1px solid #30333a. */
+  border: 1px solid #30333a;
+  /* Arredonda os cantos. Valor usado: 11px. */
+  border-radius: 11px;
+  /* Define o fundo do elemento. Valor usado: #17191e. */
+  background: #17191e;
+}
+/* Este seletor aplica estilos aos elementos .settings-info strong. */
+.settings-info strong {
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Este seletor aplica estilos aos elementos .settings-info span. */
+.settings-info span {
+  /* Define a cor do texto e dos ícones. Valor usado: #a5a7ae. */
+  color: #a5a7ae;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+  /* Define a distância vertical entre linhas. Valor usado: 1.5. */
+  line-height: 1.5;
+}
+/* Este seletor aplica estilos aos elementos .settings-empty. */
+.settings-empty {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Alinha cada item horizontalmente dentro da grade. Valor usado: center. */
+  justify-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 9px. */
+  gap: 9px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 42px 20px. */
+  padding: 42px 20px;
+  /* Define a borda do elemento. Valor usado: 1px solid #292c31. */
+  border: 1px solid #292c31;
+  /* Arredonda os cantos. Valor usado: 12px. */
+  border-radius: 12px;
+  /* Define o fundo do elemento. Valor usado: #14161a. */
+  background: #14161a;
+  /* Alinha o texto dentro do elemento. Valor usado: center. */
+  text-align: center;
+}
+/* Este seletor aplica estilos aos elementos .settings-empty > span. */
+.settings-empty > span {
+  /* Define a cor do texto e dos ícones. Valor usado: #bfc0c5. */
+  color: #bfc0c5;
+}
+/* Este seletor aplica estilos aos elementos .settings-empty strong. */
+.settings-empty strong {
+  /* Define o tamanho do texto. Valor usado: 14px. */
+  font-size: 14px;
+}
+/* Este seletor aplica estilos aos elementos .settings-empty p. */
+.settings-empty p {
+  /* Define o espaço externo ao redor do elemento. Valor usado: 0. */
+  margin: 0;
+  /* Define a cor do texto e dos ícones. Valor usado: #93959c. */
+  color: #93959c;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+}
+/* Este seletor aplica estilos aos elementos .settings-segmented. */
+.settings-segmented {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Define o espaço entre os elementos filhos. Valor usado: 20px. */
+  gap: 20px;
+  /* Define o valor da propriedade visual “margin-top”. Valor usado: 17px. */
+  margin-top: 17px;
+  /* Define a borda inferior. Valor usado: 1px solid #292c31. */
+  border-bottom: 1px solid #292c31;
+}
+/* Este seletor aplica estilos aos elementos .settings-segmented button. */
+.settings-segmented button {
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 12px 8px. */
+  padding: 12px 8px;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define a borda inferior. Valor usado: 2px solid transparent. */
+  border-bottom: 2px solid transparent;
+  /* Define o fundo do elemento. Valor usado: none. */
+  background: none;
+  /* Define a cor do texto e dos ícones. Valor usado: #a2a4ab. */
+  color: #a2a4ab;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+}
+/* Este seletor aplica estilos aos elementos .settings-segmented button.active. */
+.settings-segmented button.active {
+  /* Define o valor da propriedade visual “border-color”. Valor usado: #fff. */
+  border-color: #fff;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+}
+/* Cartão demonstrativo de QR code. */
+/* Este seletor aplica estilos aos elementos .qr-section. */
+.qr-section {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Alinha cada item horizontalmente dentro da grade. Valor usado: center. */
+  justify-items: center;
+  /* Alinha o texto dentro do elemento. Valor usado: center. */
+  text-align: center;
+}
+/* Este seletor aplica estilos aos elementos .qr-section > h3, .qr-section > p. */
+.qr-section > h3, .qr-section > p {
+  /* Define o valor da propriedade visual “justify-self”. Valor usado: stretch. */
+  justify-self: stretch;
+  /* Alinha o texto dentro do elemento. Valor usado: left. */
+  text-align: left;
+}
+/* Este seletor aplica estilos aos elementos .qr-card. */
+.qr-card {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Alinha cada item horizontalmente dentro da grade. Valor usado: center. */
+  justify-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 17px. */
+  gap: 17px;
+  /* Define o espaço externo ao redor do elemento. Valor usado: 7px 0 22px. */
+  margin: 7px 0 22px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 24px. */
+  padding: 24px;
+  /* Arredonda os cantos. Valor usado: 18px. */
+  border-radius: 18px;
+  /* Define o fundo do elemento. Valor usado: #fff. */
+  background: #fff;
+  /* Define a cor do texto e dos ícones. Valor usado: #16171a. */
+  color: #16171a;
+}
+/* Este seletor aplica estilos aos elementos .qr-grid. */
+.qr-grid {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define as colunas do layout em grade. Valor usado: repeat(10, 11px). */
+  grid-template-columns: repeat(10, 11px);
+  /* Define o valor da propriedade visual “grid-auto-rows”. Valor usado: 11px. */
+  grid-auto-rows: 11px;
+  /* Define o espaço entre os elementos filhos. Valor usado: 2px. */
+  gap: 2px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 8px. */
+  padding: 8px;
+  /* Define o fundo do elemento. Valor usado: #fff. */
+  background: #fff;
+}
+/* Este seletor aplica estilos aos elementos .qr-grid i. */
+.qr-grid i {
+  /* Define o fundo do elemento. Valor usado: #fff. */
+  background: #fff;
+}
+/* Este seletor aplica estilos aos elementos .qr-grid i.dark. */
+.qr-grid i.dark {
+  /* Define o fundo do elemento. Valor usado: #111. */
+  background: #111;
+}
+/* Este seletor aplica estilos aos elementos .qr-profile. */
+.qr-profile {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Alinha cada item horizontalmente dentro da grade. Valor usado: center. */
+  justify-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 3px. */
+  gap: 3px;
+}
+/* Este seletor aplica estilos aos elementos .qr-profile strong. */
+.qr-profile strong {
+  /* Define o tamanho do texto. Valor usado: 14px. */
+  font-size: 14px;
+}
+/* Este seletor aplica estilos aos elementos .qr-profile small. */
+.qr-profile small {
+  /* Define a cor do texto e dos ícones. Valor usado: #74767d. */
+  color: #74767d;
+  /* Define o tamanho do texto. Valor usado: 11px. */
+  font-size: 11px;
+}
+/* Este seletor aplica estilos aos elementos .qr-avatar. */
+.qr-avatar {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+  place-items: center;
+  /* Define a largura do elemento. Valor usado: 37px. */
+  width: 37px;
+  /* Define a altura do elemento. Valor usado: 37px. */
+  height: 37px;
+  /* Define o valor da propriedade visual “margin-bottom”. Valor usado: 4px. */
+  margin-bottom: 4px;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define o fundo do elemento. Valor usado: #292c31. */
+  background: #292c31;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Define a espessura/peso do texto. Valor usado: 700. */
+  font-weight: 700;
+}
+/* Este seletor aplica estilos aos elementos .settings-primary. */
+.settings-primary {
+  /* Define a altura mínima para o elemento. Valor usado: 42px. */
+  min-height: 42px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0 20px. */
+  padding: 0 20px;
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Arredonda os cantos. Valor usado: 9px. */
+  border-radius: 9px;
+  /* Define o fundo do elemento. Valor usado: #456fe0. */
+  background: #456fe0;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+  /* Define a espessura/peso do texto. Valor usado: 700. */
+  font-weight: 700;
+}
+/* Este seletor aplica estilos aos elementos .supervision-card. */
+.supervision-card {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 14px. */
+  gap: 14px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 17px 0. */
+  padding: 17px 0;
+  /* Define a borda superior. Valor usado: 1px solid #292c31. */
+  border-top: 1px solid #292c31;
+  /* Define a borda inferior. Valor usado: 1px solid #292c31. */
+  border-bottom: 1px solid #292c31;
+}
+/* Este seletor aplica estilos aos elementos .supervision-card > div. */
+.supervision-card > div {
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 1. */
+  flex: 1;
+}
+/* Este seletor aplica estilos aos elementos .supervision-icon. */
+.supervision-icon {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+  place-items: center;
+  /* Define a largura do elemento. Valor usado: 42px. */
+  width: 42px;
+  /* Define a altura do elemento. Valor usado: 42px. */
+  height: 42px;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define o fundo do elemento. Valor usado: #25282e. */
+  background: #25282e;
+  /* Define a cor do texto e dos ícones. Valor usado: #e6e7e9. */
+  color: #e6e7e9;
+}
+/* Este seletor aplica estilos aos elementos .login-session. */
+.login-session {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 13px. */
+  gap: 13px;
+  /* Define a altura mínima para o elemento. Valor usado: 75px. */
+  min-height: 75px;
+  /* Define a borda superior. Valor usado: 1px solid #292c31. */
+  border-top: 1px solid #292c31;
+}
+/* Este seletor aplica estilos aos elementos .session-device. */
+.session-device {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o valor da propriedade visual “place-items”. Valor usado: center. */
+  place-items: center;
+  /* Define a largura do elemento. Valor usado: 38px. */
+  width: 38px;
+  /* Define a altura do elemento. Valor usado: 38px. */
+  height: 38px;
+  /* Arredonda os cantos. Valor usado: 9px. */
+  border-radius: 9px;
+  /* Define o fundo do elemento. Valor usado: #24262c. */
+  background: #24262c;
+  /* Define a cor do texto e dos ícones. Valor usado: #e6e7e9. */
+  color: #e6e7e9;
+}
+/* Este seletor aplica estilos aos elementos .login-session > div. */
+.login-session > div {
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 1. */
+  flex: 1;
+}
+/* Este seletor aplica estilos aos elementos .login-session button. */
+.login-session button {
+  /* Define a borda do elemento. Valor usado: 0. */
+  border: 0;
+  /* Define o fundo do elemento. Valor usado: transparent. */
+  background: transparent;
+  /* Define a cor do texto e dos ícones. Valor usado: #87a3ff. */
+  color: #87a3ff;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+  /* Define a espessura/peso do texto. Valor usado: 700. */
+  font-weight: 700;
+}
+/* Este seletor aplica estilos aos elementos .session-current. */
+.session-current {
+  /* Define a cor do texto e dos ícones. Valor usado: #78d4a2. */
+  color: #78d4a2;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+}
+/* Este seletor aplica estilos aos elementos .settings-toast. */
+.settings-toast {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: fixed. */
+  position: fixed;
+  /* Controla qual elemento fica sobre os outros. Valor usado: 30. */
+  z-index: 30;
+  /* Define a distância em relação à base. Valor usado: 22px. */
+  bottom: 22px;
+  /* Define a distância em relação à esquerda. Valor usado: 50%. */
+  left: 50%;
+  /* Move, gira ou dimensiona o elemento. Valor usado: translateX(-50%). */
+  transform: translateX(-50%);
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 12px 18px. */
+  padding: 12px 18px;
+  /* Define a borda do elemento. Valor usado: 1px solid #363940. */
+  border: 1px solid #363940;
+  /* Arredonda os cantos. Valor usado: 10px. */
+  border-radius: 10px;
+  /* Define o fundo do elemento. Valor usado: #23252b. */
+  background: #23252b;
+  /* Define a cor do texto e dos ícones. Valor usado: #fff. */
+  color: #fff;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Campos usados para editar os dados locais do perfil. */
+/* Este seletor aplica estilos aos elementos .profile-edit-form. */
+.profile-edit-form {
+  /* Limita a largura máxima do elemento. Valor usado: 680px. */
+  max-width: 680px;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-photo. */
+.profile-edit-photo {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+  display: flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Define o espaço entre os elementos filhos. Valor usado: 14px. */
+  gap: 14px;
+  /* Define o espaço externo ao redor do elemento. Valor usado: 20px 0 22px. */
+  margin: 20px 0 22px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 14px. */
+  padding: 14px;
+  /* Arredonda os cantos. Valor usado: 12px. */
+  border-radius: 12px;
+  /* Define o fundo do elemento. Valor usado: #24262b. */
+  background: #24262b;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-photo > img. */
+.profile-edit-photo > img {
+  /* Define a largura do elemento. Valor usado: 58px. */
+  width: 58px;
+  /* Define a altura do elemento. Valor usado: 58px. */
+  height: 58px;
+  /* Arredonda os cantos. Valor usado: 50%. */
+  border-radius: 50%;
+  /* Define como a imagem se ajusta ao espaço reservado. Valor usado: cover. */
+  object-fit: cover;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-photo > div. */
+.profile-edit-photo > div {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 1. */
+  flex: 1;
+  /* Define o espaço entre os elementos filhos. Valor usado: 4px. */
+  gap: 4px;
+  /* Define a largura mínima do elemento. Valor usado: 0. */
+  min-width: 0;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-photo > div strong. */
+.profile-edit-photo > div strong {
+  /* Controla o conteúdo que ultrapassa os limites do elemento. Valor usado: hidden. */
+  overflow: hidden;
+  /* Controla como indicar texto cortado. Valor usado: ellipsis. */
+  text-overflow: ellipsis;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-photo > div span. */
+.profile-edit-photo > div span {
+  /* Define a cor do texto e dos ícones. Valor usado: #a3a5ac. */
+  color: #a3a5ac;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-photo label. */
+.profile-edit-photo label {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: relative. */
+  position: relative;
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: inline-flex. */
+  display: inline-flex;
+  /* Alinha os itens no eixo transversal do layout. Valor usado: center. */
+  align-items: center;
+  /* Distribui os elementos no eixo principal do layout. Valor usado: center. */
+  justify-content: center;
+  /* Define a altura mínima para o elemento. Valor usado: 38px. */
+  min-height: 38px;
+  /* Define o formato do cursor do mouse. Valor usado: pointer. */
+  cursor: pointer;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-photo input[type="file"]. */
+.profile-edit-photo input[type="file"] {
+  /* Define como o elemento participa do posicionamento da página. Valor usado: absolute. */
+  position: absolute;
+  /* Define a largura do elemento. Valor usado: 1px. */
+  width: 1px;
+  /* Define a altura do elemento. Valor usado: 1px. */
+  height: 1px;
+  /* Controla o conteúdo que ultrapassa os limites do elemento. Valor usado: hidden. */
+  overflow: hidden;
+  /* Define o valor da propriedade visual “clip-path”. Valor usado: inset(50%). */
+  clip-path: inset(50%);
+  /* Controla como espaços e quebras de linha são tratados. Valor usado: nowrap. */
+  white-space: nowrap;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-field. */
+.profile-edit-field {
+  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: grid. */
+  display: grid;
+  /* Define o espaço entre os elementos filhos. Valor usado: 8px. */
+  gap: 8px;
+  /* Define o espaço externo ao redor do elemento. Valor usado: 17px 0. */
+  margin: 17px 0;
+  /* Define a cor do texto e dos ícones. Valor usado: #dedfe3. */
+  color: #dedfe3;
+  /* Define o tamanho do texto. Valor usado: 13px. */
+  font-size: 13px;
+  /* Define a espessura/peso do texto. Valor usado: 600. */
+  font-weight: 600;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-field input, .profile-edit-field textarea. */
+.profile-edit-field input, .profile-edit-field textarea {
+  /* Define a largura do elemento. Valor usado: 100%. */
+  width: 100%;
+  /* Define a altura mínima para o elemento. Valor usado: 44px. */
+  min-height: 44px;
+  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 11px 13px. */
+  padding: 11px 13px;
+  /* Define a borda do elemento. Valor usado: 1px solid #363940. */
+  border: 1px solid #363940;
+  /* Arredonda os cantos. Valor usado: 9px. */
+  border-radius: 9px;
+  /* Desenha um contorno externo, usado também no foco acessível. Valor usado: none. */
+  outline: none;
+  /* Define o fundo do elemento. Valor usado: #14161a. */
+  background: #14161a;
+  /* Define a cor do texto e dos ícones. Valor usado: #f4f4f5. */
+  color: #f4f4f5;
+  /* Define o tamanho do texto. Valor usado: 14px. */
+  font-size: 14px;
+  /* Define a espessura/peso do texto. Valor usado: 400. */
+  font-weight: 400;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-field textarea. */
+.profile-edit-field textarea {
+  /* Define o valor da propriedade visual “resize”. Valor usado: vertical. */
+  resize: vertical;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-field input:focus, .profile-edit-field textarea:focus. */
+.profile-edit-field input:focus, .profile-edit-field textarea:focus {
+  /* Define o valor da propriedade visual “border-color”. Valor usado: #7d94ff. */
+  border-color: #7d94ff;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-field small. */
+.profile-edit-field small {
+  /* Define o valor da propriedade visual “justify-self”. Valor usado: end. */
+  justify-self: end;
+  /* Define a cor do texto e dos ícones. Valor usado: #92949c. */
+  color: #92949c;
+  /* Define a espessura/peso do texto. Valor usado: 400. */
+  font-weight: 400;
+}
+/* Este seletor aplica estilos aos elementos .profile-edit-note. */
+.profile-edit-note {
+  /* Define a cor do texto e dos ícones. Valor usado: #92949c. */
+  color: #92949c;
+  /* Define o tamanho do texto. Valor usado: 12px. */
+  font-size: 12px;
+  /* Define a distância vertical entre linhas. Valor usado: 1.5. */
+  line-height: 1.5;
+}
+/* Este seletor aplica estilos aos elementos .profile-save-button. */
+.profile-save-button {
+  /* Define a largura mínima do elemento. Valor usado: 140px. */
+  min-width: 140px;
+  /* Define o valor da propriedade visual “margin-top”. Valor usado: 10px. */
+  margin-top: 10px;
+}
+/* Ajustes de layout para telas menores. */
+@media (max-width: 760px) {
+  .settings-header {
+    /* Define a altura do elemento. Valor usado: 64px. */
+    height: 64px;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0 18px. */
+    padding: 0 18px;
+  }
+  .settings-wordmark {
+    /* Define o tamanho do texto. Valor usado: 23px. */
+    font-size: 23px;
+  }
+  .settings-layout {
+    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
+    display: block;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 24px 18px 55px. */
+    padding: 24px 18px 55px;
+  }
+  .settings-nav {
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 0 0 18px. */
+    padding: 0 0 18px;
+    /* Define a borda direita. Valor usado: 0. */
+    border-right: 0;
+    /* Define a borda inferior. Valor usado: 1px solid #292c31. */
+    border-bottom: 1px solid #292c31;
+  }
+  .settings-nav h1 {
+    /* Define o tamanho do texto. Valor usado: 21px. */
+    font-size: 21px;
+  }
+  .settings-nav > p {
+    /* Define o valor da propriedade visual “margin-bottom”. Valor usado: 15px. */
+    margin-bottom: 15px;
+  }
+  .settings-nav nav {
+    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
+    display: flex;
+    /* Define o valor da propriedade visual “overflow-x”. Valor usado: auto. */
+    overflow-x: auto;
+    /* Define o espaço entre os elementos filhos. Valor usado: 7px. */
+    gap: 7px;
+    /* Define o valor da propriedade visual “padding-bottom”. Valor usado: 5px. */
+    padding-bottom: 5px;
+  }
+  .settings-nav nav button {
+    /* Define o tamanho e a flexibilidade do item no flexbox. Valor usado: 0 0 auto. */
+    flex: 0 0 auto;
+    /* Define a altura mínima para o elemento. Valor usado: 38px. */
+    min-height: 38px;
+    /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 7px 10px. */
+    padding: 7px 10px;
+    /* Define a borda do elemento. Valor usado: 1px solid #30333a. */
+    border: 1px solid #30333a;
+    /* Arredonda os cantos. Valor usado: 20px. */
+    border-radius: 20px;
+    /* Define o tamanho do texto. Valor usado: 11px. */
+    font-size: 11px;
+  }
+  .settings-nav nav button.settings-logout {
+    /* Define o espaço externo ao redor do elemento. Valor usado: 0. */
+    margin: 0;
+    /* Define o valor da propriedade visual “padding-top”. Valor usado: 7px. */
+    padding-top: 7px;
+    /* Define a borda superior. Valor usado: 1px solid #30333a. */
+    border-top: 1px solid #30333a;
+  }
+  .settings-nav-icon {
+    /* Define a largura do elemento. Valor usado: 17px. */
+    width: 17px;
+    /* Define a altura do elemento. Valor usado: 17px. */
+    height: 17px;
+    /* Define o tamanho do texto. Valor usado: 15px. */
+    font-size: 15px;
+  }
+  .settings-content {
+    /* Define o valor da propriedade visual “padding-top”. Valor usado: 21px. */
+    padding-top: 21px;
+  }
+  .settings-content-heading h2 {
+    /* Define o tamanho do texto. Valor usado: 17px. */
+    font-size: 17px;
+  }
+  .setting-row {
+    /* Define o espaço entre os elementos filhos. Valor usado: 14px. */
+    gap: 14px;
+  }
+  .setting-row p {
+    /* Limita a largura máxima do elemento. Valor usado: 42ch. */
+    max-width: 42ch;
+  }
+  .qr-grid {
+    /* Define as colunas do layout em grade. Valor usado: repeat(10, 9px). */
+    grid-template-columns: repeat(10, 9px);
+    /* Define o valor da propriedade visual “grid-auto-rows”. Valor usado: 9px. */
+    grid-auto-rows: 9px;
+  }
+}
