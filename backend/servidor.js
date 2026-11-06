@@ -4,7 +4,7 @@ const path = require('path')
 const crypto = require('crypto')
 
 const app = express()
-const porta = 3000
+const porta = Number(process.env.PORT || 3000)
 const arquivoDados = path.join(__dirname, 'dados.json')
 const sessoes = new Map()
 
@@ -90,24 +90,38 @@ function exigirLogin(req, res, next) {
 // Cria uma conta usando somente os dados necessários para login e perfil.
 app.post('/usuario', (req, res) => {
   const { nome, usuario, email, senha } = req.body
-  if (!nome || !usuario || !email || !senha) {
+  const nomeNormalizado = String(nome || '').trim()
+  const usuarioNormalizado = String(usuario || '').trim().replace(/^@/, '').toLowerCase()
+  const emailNormalizado = String(email || '').trim().toLowerCase()
+
+  if (!nomeNormalizado || !usuarioNormalizado || !emailNormalizado || !senha) {
     return res.status(400).json({ erro: 'Informe nome, usuário, email e senha.' })
+  }
+  if (nomeNormalizado.length < 2 || nomeNormalizado.length > 40) {
+    return res.status(400).json({ erro: 'O nome precisa ter entre 2 e 40 caracteres.' })
+  }
+  if (!/^[a-z0-9._]{3,30}$/.test(usuarioNormalizado)) {
+    return res.status(400).json({ erro: 'O nome de usuário deve ter entre 3 e 30 caracteres: letras, números, ponto ou underline.' })
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailNormalizado)) {
+    return res.status(400).json({ erro: 'Informe um email válido.' })
   }
   if (String(senha).length < 6) {
     return res.status(400).json({ erro: 'A senha precisa ter pelo menos 6 caracteres.' })
   }
 
   const dados = lerDados()
-  const emailNormalizado = String(email).trim().toLowerCase()
-  const usuarioNormalizado = String(usuario).trim().replace(/^@/, '').toLowerCase()
-  const jaExiste = dados.usuarios.some(item => item.email === emailNormalizado || item.usuario === usuarioNormalizado)
+  const jaExiste = dados.usuarios.some(item =>
+    String(item.email).toLowerCase() === emailNormalizado ||
+    String(item.usuario).toLowerCase() === usuarioNormalizado
+  )
   if (jaExiste) return res.status(409).json({ erro: 'Esse email ou nome de usuário já está cadastrado.' })
 
   const senhaSalt = crypto.randomBytes(16).toString('hex')
   const senhaHash = crypto.scryptSync(String(senha), senhaSalt, 64).toString('hex')
   const novoUsuario = {
     id: crypto.randomUUID(),
-    nome: String(nome).trim(),
+    nome: nomeNormalizado,
     usuario: usuarioNormalizado,
     email: emailNormalizado,
     bio: '',
@@ -299,12 +313,67 @@ app.get('/usuario/:id', (req, res) => {
 app.patch('/usuario', exigirLogin, (req, res) => {
   const dados = lerDados()
   const usuario = dados.usuarios.find(item => item.id === req.usuario.id)
-  const camposPermitidos = ['nome', 'usuario', 'bio', 'site', 'imagem']
+  if (!usuario) return res.status(404).json({ erro: 'Usuário não encontrado.' })
 
-  for (const campo of camposPermitidos) {
-    if (req.body[campo] !== undefined) usuario[campo] = String(req.body[campo]).trim()
+  const nome = req.body.nome === undefined ? usuario.nome : String(req.body.nome).trim()
+  const nomeDeUsuario = req.body.usuario === undefined
+    ? usuario.usuario
+    : String(req.body.usuario).trim().replace(/^@/, '').toLowerCase()
+  const bio = req.body.bio === undefined ? usuario.bio : String(req.body.bio).trim()
+  const site = req.body.site === undefined ? usuario.site : String(req.body.site).trim()
+
+  if (!nome || nome.length < 2 || nome.length > 40) {
+    return res.status(400).json({ erro: 'O nome precisa ter entre 2 e 40 caracteres.' })
   }
-  if (usuario.usuario.startsWith('@')) usuario.usuario = usuario.usuario.slice(1)
+  if (!/^[a-z0-9._]{3,30}$/.test(nomeDeUsuario)) {
+    return res.status(400).json({ erro: 'O nome de usuário deve ter entre 3 e 30 caracteres: letras, números, ponto ou underline.' })
+  }
+  if (bio.length > 150) return res.status(400).json({ erro: 'A biografia pode ter no máximo 150 caracteres.' })
+  if (site.length > 2048) return res.status(400).json({ erro: 'O endereço do site é muito longo.' })
+
+  const nomeDeUsuarioEmUso = dados.usuarios.some(item =>
+    item.id !== usuario.id && String(item.usuario).toLowerCase() === nomeDeUsuario
+  )
+  if (nomeDeUsuarioEmUso) return res.status(409).json({ erro: 'Esse nome de usuário já está em uso.' })
+
+  let imagem = usuario.imagem
+  if (req.body.imagem !== undefined) {
+    const imagemRecebida = String(req.body.imagem).trim()
+    if (!imagemRecebida || imagemRecebida.length > 9 * 1024 * 1024) {
+      return res.status(400).json({ erro: 'Escolha uma imagem válida de até 6 MB.' })
+    }
+
+    if (imagemRecebida.startsWith('data:image/')) {
+      imagem = salvarImagem(imagemRecebida, req)
+      if (!imagem) return res.status(400).json({ erro: 'Escolha uma imagem JPG, PNG, WEBP ou GIF de até 6 MB.' })
+    } else if (/^https?:\/\//i.test(imagemRecebida) || imagemRecebida.startsWith('/avatars/') || imagemRecebida.startsWith('/uploads/')) {
+      imagem = imagemRecebida
+    } else {
+      return res.status(400).json({ erro: 'O endereço da foto do perfil não é válido.' })
+    }
+  }
+
+  const nomeDeUsuarioAnterior = usuario.usuario
+  usuario.nome = nome
+  usuario.usuario = nomeDeUsuario
+  usuario.bio = bio
+  usuario.site = site
+  usuario.imagem = imagem
+
+  // Mantém posts, stories e permissões de exclusão ligados à conta após a troca do nome.
+  for (const post of dados.posts) {
+    if (post.usuario === nomeDeUsuarioAnterior) {
+      post.usuario = nomeDeUsuario
+      post.avatar = imagem
+    }
+  }
+  for (const story of dados.stories) {
+    if (story.usuario === nomeDeUsuarioAnterior) {
+      story.usuario = nomeDeUsuario
+      story.avatar = imagem
+    }
+  }
+
   salvarDados(dados)
   res.json(usuarioPublico(usuario))
 })

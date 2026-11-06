@@ -17,12 +17,14 @@ const OPTIONS = [
 // Área de configurações com formulário de perfil e nomes das outras opções.
 export default function SettingsPage({ token, user, onUserUpdate, section, onSectionChange, onBack, onLogout }) {
   const [notice, setNotice] = useState('')
+  const [isSaving, setIsSaving] = useState(false)
   const [profile, setProfile] = useState({ username: user?.usuario || '', displayName: user?.nome || '', bio: user?.bio || '', website: user?.site || '', image: user?.imagem || '' })
   const activeOption = OPTIONS.find(option => option.id === section) || OPTIONS[0]
 
   // Salva as alterações do perfil na API e atualiza o estado compartilhado da aplicação.
   async function saveProfile(event) {
     event.preventDefault()
+    setIsSaving(true)
     try {
       const usuario = await apiRequest('/usuario', { method: 'PATCH', token, body: {
         usuario: profile.username.trim().replace(/^@/, ''), nome: profile.displayName.trim(),
@@ -33,6 +35,8 @@ export default function SettingsPage({ token, user, onUserUpdate, section, onSec
       setNotice('Perfil atualizado')
     } catch (error) {
       setNotice(error.message)
+    } finally {
+      setIsSaving(false)
     }
     window.setTimeout(() => setNotice(''), 2200)
   }
@@ -41,13 +45,23 @@ export default function SettingsPage({ token, user, onUserUpdate, section, onSec
   function changePhoto(event) {
     const file = event.target.files?.[0]
     if (!file) return
-    if (!file.type.startsWith('image/')) {
-      setNotice('Escolha um arquivo de imagem')
+    const formatosAceitos = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+    if (!formatosAceitos.includes(file.type) || file.size > 6 * 1024 * 1024) {
+      setNotice('Escolha uma imagem JPG, PNG, WEBP ou GIF de até 6 MB.')
       window.setTimeout(() => setNotice(''), 2200)
+      event.target.value = ''
       return
     }
     const reader = new FileReader()
-    reader.onload = () => setProfile(current => ({ ...current, image: reader.result }))
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        setProfile(current => ({ ...current, image: reader.result }))
+      }
+    }
+    reader.onerror = () => {
+      setNotice('Não foi possível ler a foto selecionada.')
+      window.setTimeout(() => setNotice(''), 2200)
+    }
     reader.readAsDataURL(file)
   }
 
@@ -76,7 +90,7 @@ export default function SettingsPage({ token, user, onUserUpdate, section, onSec
           <div className="profile-edit-photo">
     <img src={profile.image} alt="Foto atual do perfil"/>
             <div><strong>{profile.username}</strong><span>{profile.displayName}</span></div>
-            <label className="settings-primary">Mudar foto<input type="file" accept="image/*" onChange={changePhoto}/></label>
+            <label className="settings-primary">Mudar foto<input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={changePhoto}/></label>
           </div>
           <label className="profile-edit-field">Nome
             <input value={profile.displayName} onChange={event => setProfile(current => ({ ...current, displayName: event.target.value }))} maxLength={40}/>
@@ -92,7 +106,9 @@ export default function SettingsPage({ token, user, onUserUpdate, section, onSec
             <input value={profile.website} onChange={event => setProfile(current => ({ ...current, website: event.target.value }))} placeholder="https://"/>
           </label>
           <p className="profile-edit-note">As alterações serão salvas na sua conta.</p>
-          <button className="settings-primary profile-save-button" type="submit">Enviar</button>
+          <button className="settings-primary profile-save-button" type="submit" disabled={isSaving}>
+            {isSaving ? 'Salvando...' : 'Enviar'}
+          </button>
         </form>}
       </main>
     </div>
