@@ -6,51 +6,35 @@ import './Login.css'
 
 // Imagens decorativas usadas na composição visual da tela de entrada.
 const PHOTOS = {
-  // Imagem decorativa colocada à esquerda da composição.
   left: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=400&q=80',
-  // Imagem principal colocada no centro da composição.
   center: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80',
-  // Imagem decorativa colocada à direita da composição.
   right: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80',
 }
 
 // Tela inicial que autentica ou cadastra a conta usando o backend.
 function LoginPage({ onLogin, onRegister }) {
-  // Guarda se o formulário está no modo de login ou cadastro.
   const [mode, setMode] = useState('login')
-  // Guarda o email usado para entrar ou cadastrado na conta.
   const [identifier, setIdentifier] = useState('')
-  // Guarda a senha digitada no formulário.
   const [password, setPassword] = useState('')
-  // Guarda o nome digitado durante o cadastro.
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
-  // Guarda a mensagem de validação que será mostrada.
   const [error, setError] = useState('')
-  // Guarda uma confirmação ou informação para mostrar no formulário.
   const [message, setMessage] = useState('')
 
-  // Verifica diretamente se os campos obrigatórios estão preenchidos corretamente.
   const canSubmit = identifier.trim().length > 3 && password.length >= 6 &&
     (mode !== 'signup' || (name.trim().length >= 2 && username.trim().length >= 3))
 
-  // Valida o formulário e encaminha para o feed no modo de demonstração.
+  // Valida o formulário e envia os dados de login ou cadastro ao backend.
   async function handleSubmit(event) {
-    // Impede o comportamento padrão do navegador (como recarregar a página ao enviar um formulário).
     event.preventDefault()
-    // Limpa ou define a mensagem de erro do formulário.
     setError('')
-    // Limpa ou define a mensagem informativa do formulário.
     setMessage('')
 
-    // Verifica a condição entre parênteses e executa o bloco seguinte quando ela é verdadeira.
     if (!canSubmit) {
-      // Limpa ou define a mensagem de erro do formulário.
       setError('Preencha os campos corretamente. A senha precisa ter pelo menos 6 caracteres.')
       return
     }
 
-    // Verifica a condição entre parênteses e executa o bloco seguinte quando ela é verdadeira.
     if (mode === 'login') {
       try {
         await onLogin(identifier, password)
