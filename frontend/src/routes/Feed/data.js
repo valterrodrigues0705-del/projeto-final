@@ -1,8 +1,6 @@
 // Conteúdo de demonstração do feed. Depois poderá ser substituído por dados do backend.
 export const STORIES = [
-  // Story da própria conta; own ativa o símbolo de adicionar.
   { name: 'Seu story', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80', own: true },
-  // Dados de exemplo para os stories das contas seguidas.
   { name: 'marina.luz', image: '/avatars/marina-luz.jpg' },
   { name: 'pedro.silva', image: '/avatars/pedro-silva.jpg' },
   { name: 'annaluiza', image: '/avatars/annaluiza.jpg' },
@@ -12,7 +10,6 @@ export const STORIES = [
 
 // Publicações exibidas na coluna principal; avatar reutiliza a imagem do story da pessoa.
 export const POSTS = [
-  // Publicação com autor, local, mídia, legenda e curtidas iniciais.
   { user: 'marina.luz', location: 'Praia do Rosa, SC', avatar: STORIES[1].image, image: 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1000&q=85', caption: 'Um respiro no meio da correria 🌊', likes: '2.438' },
   { user: 'pedro.silva', location: 'São Paulo, Brasil', avatar: STORIES[2].image, image: 'https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=85', caption: 'A cidade também sabe desacelerar.', likes: '816' },
   { user: 'annaluiza', location: 'Jardim botânico', avatar: STORIES[3].image, image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=85', caption: 'Colecionando cantinhos verdes 🌿', likes: '1.204' },
@@ -20,7 +17,6 @@ export const POSTS = [
 
 // Contas de exemplo exibidas na coluna lateral de sugestões.
 export const SUGGESTIONS = [
-  // Conta sugerida e texto que explica por que ela aparece na lista.
   { name: 'avril.lavigne', label: 'Seguido(a) por carol_m', image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80' },
   { name: 'cafecomarte', label: 'Sugestão para você', image: STORIES[4].image },
   { name: 'gui.viagens', label: 'Seguido(a) por marina.luz', image: STORIES[5].image },

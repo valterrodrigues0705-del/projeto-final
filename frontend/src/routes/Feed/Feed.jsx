@@ -9,11 +9,8 @@ import './Feed.css'
 
 // Página Feed: coordena o menu, os stories, publicações e estados compartilhados.
 export default function Feed({ token, user, onLogout, onProfile }) {
-  // Guarda quem o usuário decidiu seguir, o story aberto e avisos temporários.
   const [following, setFollowing] = useState({})
-  // Guarda qual story está aberto; null significa que nenhum está selecionado.
   const [activeStory, setActiveStory] = useState(null)
-  // Guarda o texto do aviso temporário exibido na tela.
   const [notice, setNotice] = useState('')
   const [feed, setFeed] = useState({ stories: [], posts: [] })
   const [loadingError, setLoadingError] = useState('')
