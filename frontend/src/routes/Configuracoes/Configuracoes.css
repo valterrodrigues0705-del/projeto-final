@@ -40,6 +40,11 @@
   /* Define o espaço entre letras. Valor usado: -1.5px. */
   letter-spacing: -1.5px;
 }
+.settings-logo {
+  width: 38px;
+  height: 38px;
+  display: block;
+}
 /* Este seletor aplica estilos aos elementos .settings-wordmark span. */
 .settings-wordmark span {
   /* Define a cor do texto e dos ícones. Valor usado: #f34085. */

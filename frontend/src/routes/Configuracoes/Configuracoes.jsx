@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Configuracoes.css'
-import { DEFAULT_PROFILE, PROFILE_STORAGE_KEY, readProfile } from '../profileData.js'
+import Logo from '../../components/Logo/Logo.jsx'
+import { apiRequest } from '../../services/api.js'
 
 // Lista os nomes das áreas; por enquanto, somente Editar perfil tem conteúdo.
 const OPTIONS = [
@@ -14,24 +15,25 @@ const OPTIONS = [
 ]
 
 // Área de configurações com formulário de perfil e nomes das outras opções.
-export default function SettingsPage({ section, onSectionChange, onBack, onLogout }) {
+export default function SettingsPage({ token, user, onUserUpdate, section, onSectionChange, onBack, onLogout }) {
   const [notice, setNotice] = useState('')
-  const [profile, setProfile] = useState(readProfile)
+  const [profile, setProfile] = useState({ username: user?.usuario || '', displayName: user?.nome || '', bio: user?.bio || '', website: user?.site || '', image: user?.imagem || '' })
   const activeOption = OPTIONS.find(option => option.id === section) || OPTIONS[0]
 
-  // Salva as alterações do perfil somente no armazenamento deste navegador.
-  function saveProfile(event) {
+  // Salva as alterações do perfil na API e atualiza o estado compartilhado da aplicação.
+  async function saveProfile(event) {
     event.preventDefault()
-    const updatedProfile = {
-      ...profile,
-      username: profile.username.trim().replace(/^@/, '') || DEFAULT_PROFILE.username,
-      displayName: profile.displayName.trim() || DEFAULT_PROFILE.displayName,
-      bio: profile.bio.trim(),
-      website: profile.website.trim(),
+    try {
+      const usuario = await apiRequest('/usuario', { method: 'PATCH', token, body: {
+        usuario: profile.username.trim().replace(/^@/, ''), nome: profile.displayName.trim(),
+        bio: profile.bio.trim(), site: profile.website.trim(), imagem: profile.image,
+      } })
+      onUserUpdate(usuario)
+      setProfile({ username: usuario.usuario, displayName: usuario.nome, bio: usuario.bio, website: usuario.site, image: usuario.imagem })
+      setNotice('Perfil atualizado')
+    } catch (error) {
+      setNotice(error.message)
     }
-    localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(updatedProfile))
-    setProfile(updatedProfile)
-    setNotice('Perfil atualizado')
     window.setTimeout(() => setNotice(''), 2200)
   }
 
@@ -51,7 +53,7 @@ export default function SettingsPage({ section, onSectionChange, onBack, onLogou
 
   return <div className="settings-page">
     <header className="settings-header">
-      <a className="settings-wordmark" href="/?page=profile">momentos<span>✳</span></a>
+      <a className="settings-wordmark" href="/perfil" aria-label="Projeto final"><Logo className="settings-logo" /></a>
       <button className="settings-back" onClick={onBack}>← <span>Voltar ao perfil</span></button>
     </header>
     <div className="settings-layout">
@@ -72,8 +74,8 @@ export default function SettingsPage({ section, onSectionChange, onBack, onLogou
           <h3>Editar perfil</h3>
           <p>Atualize as informações que aparecem no seu perfil.</p>
           <div className="profile-edit-photo">
-            <img src={profile.image} alt="Foto atual do perfil"/>
-            <div><strong>{profile.username || DEFAULT_PROFILE.username}</strong><span>{profile.displayName || DEFAULT_PROFILE.displayName}</span></div>
+    <img src={profile.image} alt="Foto atual do perfil"/>
+            <div><strong>{profile.username}</strong><span>{profile.displayName}</span></div>
             <label className="settings-primary">Mudar foto<input type="file" accept="image/*" onChange={changePhoto}/></label>
           </div>
           <label className="profile-edit-field">Nome
@@ -89,7 +91,7 @@ export default function SettingsPage({ section, onSectionChange, onBack, onLogou
           <label className="profile-edit-field">Site
             <input value={profile.website} onChange={event => setProfile(current => ({ ...current, website: event.target.value }))} placeholder="https://"/>
           </label>
-          <p className="profile-edit-note">As alterações ficam salvas neste navegador enquanto o projeto ainda não está conectado ao backend.</p>
+          <p className="profile-edit-note">As alterações serão salvas na sua conta.</p>
           <button className="settings-primary profile-save-button" type="submit">Enviar</button>
         </form>}
       </main>

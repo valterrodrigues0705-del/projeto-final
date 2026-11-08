@@ -1,5 +1,5 @@
-// Chave usada pelo navegador para guardar os dados de perfil deste protótipo.
-export const PROFILE_STORAGE_KEY = 'momentos-profile'
+// Chave nova usada pelo navegador para guardar os dados locais de perfil.
+export const PROFILE_STORAGE_KEY = 'projeto-final-profile'
 
 // Valores iniciais usados quando ainda não há perfil salvo no localStorage.
 export const DEFAULT_PROFILE = {
@@ -26,6 +26,5 @@ export function readProfile() {
 
 // Guarda as alterações no navegador até existir uma API/backend.
 export function saveProfile(profile) {
-  // Acessa o armazenamento do navegador ou o leitor de arquivo para manter os dados locais.
   localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile))
 }

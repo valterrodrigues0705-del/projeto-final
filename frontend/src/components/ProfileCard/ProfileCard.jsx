@@ -6,7 +6,7 @@ const TABS = [
   { id: 'tagged', label: 'Marcados', icon: '♙' },
 ]
 
-export default function ProfileCard({ profile, tab, setTab, setModal, showSettingsMenu, setShowSettingsMenu, onSettings, onLogout }) {
+export default function ProfileCard({ profile, posts = [], postCount = 0, tab, setTab, setModal, onCreate, onDeletePost, showSettingsMenu, setShowSettingsMenu, onSettings, onLogout }) {
   const { username, displayName, bio, image } = profile
 
   return <main className="profile-main">
@@ -37,7 +37,7 @@ export default function ProfileCard({ profile, tab, setTab, setModal, showSettin
         </div>
         <p className="profile-display-name">{displayName}</p>
         <div className="profile-stats">
-          <span><strong>0</strong> posts</span>
+          <span><strong>{postCount}</strong> posts</span>
           <button onClick={() => setModal('followers')}><strong>19</strong> seguidores</button>
           <button onClick={() => setModal('following')}><strong>1.420</strong> seguindo</button>
         </div>
@@ -49,18 +49,23 @@ export default function ProfileCard({ profile, tab, setTab, setModal, showSettin
       <button onClick={() => setModal('archive')}>Ver itens arquivados</button>
     </div>
     <section className="profile-highlights" aria-label="Destaques">
-      <button className="highlight-add" onClick={() => setModal('highlight')}><span>+</span><strong>Novo</strong></button>
+      <button className="highlight-add" onClick={() => onCreate('story')} aria-label="Criar story"><span>+</span><strong>Novo story</strong></button>
     </section>
     <nav className="profile-tabs" aria-label="Conteúdo do perfil">
       {TABS.map(item => <button key={item.id} className={tab === item.id ? 'selected' : ''} onClick={() => setTab(item.id)} aria-label={item.label}>
         <span>{item.icon}</span><small>{item.label}</small>
       </button>)}
     </nav>
-    <section className="profile-empty">
+    {tab === 'posts' && posts.length > 0 ? <section className="profile-post-grid" aria-label="Publicações do perfil">
+      {posts.map(post => <article className="profile-post-tile" key={post.id}>
+        <img src={post.imagem} alt={post.legenda || `Publicação de ${username}`}/>
+        <button type="button" onClick={() => onDeletePost(post.id)} aria-label="Excluir publicação">Excluir</button>
+      </article>)}
+    </section> : <section className="profile-empty">
       <div className="empty-camera"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="5"/><path d="m10 8 6 4-6 4z"/></svg></div>
       <h2>{tab === 'posts' ? 'Compartilhar fotos' : tab === 'saved' ? 'Itens salvos' : tab === 'reposts' ? 'Seus reposts' : 'Fotos com você'}</h2>
       <p>{tab === 'posts' ? 'Quando você compartilhar fotos, elas aparecerão no seu perfil.' : 'O conteúdo aparecerá aqui quando estiver disponível.'}</p>
-      {tab === 'posts' && <button onClick={() => setModal('new-post')}>Compartilhar sua primeira foto</button>}
-    </section>
+      {tab === 'posts' && <button onClick={() => onCreate('post')}>Compartilhar sua primeira foto</button>}
+    </section>}
   </main>
 }
