@@ -3,13 +3,10 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
 // Envia uma chamada ao backend e devolve os dados recebidos.
 export async function apiRequest(path, options = {}) {
-  // Usa GET quando a chamada não informa um método, como POST ou DELETE.
   const method = options.method || 'GET'
-  // Guarda os dados opcionais da requisição em variáveis fáceis de identificar.
   const body = options.body
   const token = options.token
 
-  // Prepara os cabeçalhos que acompanham a chamada.
   const headers = {}
   if (body) {
     headers['Content-Type'] = 'application/json'
@@ -18,13 +15,11 @@ export async function apiRequest(path, options = {}) {
     headers.Authorization = `Bearer ${token}`
   }
 
-  // Monta as opções básicas para o fetch.
   const requestOptions = {
     method,
     headers,
   }
 
-  // Converte os dados para JSON somente quando a chamada tem um corpo.
   if (body) {
     requestOptions.body = JSON.stringify(body)
   }

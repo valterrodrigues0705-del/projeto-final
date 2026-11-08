@@ -2,7 +2,6 @@ import Logo from '../Logo/Logo.jsx'
 
 // Desenha um ícone SVG. O nome escolhe a forma e os parâmetros ajustam tamanho/preenchimento.
 export function Icon({ name, size = 24, filled = false }) {
-  // Declara “common”, valor usado pela lógica ou pela interface.
   const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true }
   // Cada chave contém o desenho SVG usado pelo menu e pelos botões do feed.
   const shapes = {
