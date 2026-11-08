@@ -1,4 +1,4 @@
-import { readProfile } from '../../routes/profileData.js'
+import Logo from '../Logo/Logo.jsx'
 
 // Desenha um ícone SVG. O nome escolhe a forma e os parâmetros ajustam tamanho/preenchimento.
 export function Icon({ name, size = 24, filled = false }) {
@@ -33,13 +33,12 @@ export function Icon({ name, size = 24, filled = false }) {
   return <svg {...common}>{shapes[name]}</svg>
 }
 
-export default function Sidebar({ onLogout, onNotice = () => {}, onProfile, onHome, active = 'home' }) {
-  // Lê a foto do perfil salva localmente para mostrá-la também na navegação.
-  const { image } = readProfile()
+export default function Sidebar({ user, onLogout, onNotice = () => {}, onProfile, onHome, onCreate, active = 'home' }) {
+  // Usa a foto recebida do backend no atalho de perfil da navegação.
+  const image = user?.imagem || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80'
   // O menu é compartilhado entre Feed e Perfil; callbacks vêm da rota atual.
   return <aside className="feed-sidebar">
-    <a className="feed-wordmark" href="/feed" aria-label="Momentos">momentos
-    <span>✳</span></a>
+    <a className="feed-wordmark" href="/feed" aria-label="Projeto final"><Logo className="feed-logo" /></a>
     <nav className="feed-nav" aria-label="Navegação principal">
       <button className={`feed-nav-item ${active === 'home' ? 'active' : ''}`} onClick={onHome || (() => window.scrollTo({ top: 0, behavior: 'smooth' }))}>
       <Icon name="home" filled={active === 'home'}/>
@@ -59,7 +58,7 @@ export default function Sidebar({ onLogout, onNotice = () => {}, onProfile, onHo
       <button className="feed-nav-item" onClick={() => onNotice('Você está em dia com as novidades.')}>
       <Icon name="heart"/>
       <span>Notificações</span></button>
-      <button className="feed-nav-item" onClick={() => onNotice('A criação de publicação estará disponível em breve.')}>
+      <button className="feed-nav-item" onClick={onCreate || (() => onNotice('Abra o feed para criar uma publicação.'))}>
       <Icon name="plus"/>
       <span>Criar</span></button>
       <button className={`feed-nav-item profile-nav ${active === 'profile' ? 'active' : ''}`} onClick={onProfile || onLogout}>

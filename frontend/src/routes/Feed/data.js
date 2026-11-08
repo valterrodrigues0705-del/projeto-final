@@ -3,11 +3,11 @@ export const STORIES = [
   // Story da própria conta; own ativa o símbolo de adicionar.
   { name: 'Seu story', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80', own: true },
   // Dados de exemplo para os stories das contas seguidas.
-  { name: 'marina.luz', image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=160&q=80' },
-  { name: 'pedro.silva', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80' },
-  { name: 'annaluiza', image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&q=80' },
-  { name: 'cafecomarte', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=160&q=80' },
-  { name: 'gui.viagens', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80' },
+  { name: 'marina.luz', image: '/avatars/marina-luz.jpg' },
+  { name: 'pedro.silva', image: '/avatars/pedro-silva.jpg' },
+  { name: 'annaluiza', image: '/avatars/annaluiza.jpg' },
+  { name: 'cafecomarte', image: '/avatars/cafecomarte.jpg' },
+  { name: 'gui.viagens', image: '/avatars/gui-viagens.jpg' },
 ]
 
 // Publicações exibidas na coluna principal; avatar reutiliza a imagem do story da pessoa.
@@ -24,7 +24,7 @@ export const SUGGESTIONS = [
   { name: 'avril.lavigne', label: 'Seguido(a) por carol_m', image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80' },
   { name: 'cafecomarte', label: 'Sugestão para você', image: STORIES[4].image },
   { name: 'gui.viagens', label: 'Seguido(a) por marina.luz', image: STORIES[5].image },
-  { name: 'fotografia.diaria', label: 'Novo no Momentos', image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=100&q=80' },
+  { name: 'fotografia.diaria', label: 'Novo no Projeto final', image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=100&q=80' },
 ]
 
 // Imagem padrão usada para representar a conta conectada no protótipo.

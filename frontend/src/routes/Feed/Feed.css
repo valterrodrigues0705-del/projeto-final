@@ -77,6 +77,11 @@
   /* Define o espaço entre letras. Valor usado: -1.6px. */
   letter-spacing: -1.6px;
 }
+.feed-logo {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
 /* Este seletor aplica estilos aos elementos .feed-wordmark span. */
 .feed-wordmark span {
   /* Define a cor do texto e dos ícones. Valor usado: #f34085. */
@@ -230,16 +235,26 @@
 .stories {
   /* Define como o elemento participa do posicionamento da página. Valor usado: relative. */
   position: relative;
-  /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
-  display: flex;
-  /* Define o espaço entre os elementos filhos. Valor usado: 18px. */
-  gap: 18px;
+  /* Mantém a faixa ocupando a largura da coluna do feed. */
+  width: 100%;
   /* Define o valor da propriedade visual “overflow-x”. Valor usado: auto. */
   overflow-x: auto;
-  /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 2px 3px 23px. */
+  /* Reserva espaço para os círculos e centraliza quando todos cabem. */
   padding: 2px 3px 23px;
   /* Define o valor da propriedade visual “scrollbar-width”. Valor usado: none. */
   scrollbar-width: none;
+}
+/* Faixa interna que pode crescer além da área visível sem cortar o primeiro story. */
+.stories-track {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  justify-content: center;
+  gap: 18px;
+}
+/* Quando há mais stories que espaço, alinha a faixa à esquerda para permitir rolagem completa. */
+.stories-overflow .stories-track {
+  justify-content: flex-start;
 }
 /* Este seletor aplica estilos aos elementos .stories::-webkit-scrollbar. */
 .stories::-webkit-scrollbar {
@@ -509,6 +524,14 @@
   /* Define como a imagem se ajusta ao espaço reservado. Valor usado: cover. */
   object-fit: cover;
 }
+.post-image-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
 /* Este seletor aplica estilos aos elementos .post-actions. */
 .post-actions {
   /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: flex. */
@@ -590,6 +613,11 @@
   cursor: pointer;
   /* Define o tamanho do texto. Valor usado: 12px. */
   font-size: 12px;
+  /* Remove o visual padrão do botão para manter a aparência original do link. */
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
 }
 /* Este seletor aplica estilos aos elementos .new-comment. */
 .new-comment {
@@ -833,6 +861,7 @@
   /* Define o fundo do elemento. Valor usado: #000d. */
   background: #000d;
 }
+
 /* Este seletor aplica estilos aos elementos .story-viewer. */
 .story-viewer {
   /* Define como o elemento participa do posicionamento da página. Valor usado: relative. */
@@ -864,25 +893,56 @@
   right: 10px;
   /* Define a distância em relação à esquerda. Valor usado: 10px. */
   left: 10px;
+  /* Distribui uma barra de progresso para cada story da sequência. */
+  display: flex;
+  /* Cria um pequeno espaço entre as partes da barra. */
+  gap: 4px;
   /* Define a altura do elemento. Valor usado: 3px. */
   height: 3px;
   /* Arredonda os cantos. Valor usado: 9px. */
   border-radius: 9px;
-  /* Define o fundo do elemento. Valor usado: #ffffff70. */
-  background: #ffffff70;
+  /* Deixa o fundo transparente para cada trecho ter sua própria cor. */
+  background: transparent;
 }
 /* Este seletor aplica estilos aos elementos .story-progress span. */
 .story-progress span {
   /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: block. */
   display: block;
-  /* Define a largura do elemento. Valor usado: 45%. */
-  width: 45%;
+  /* Divide o espaço igualmente entre os stories. */
+  flex: 1;
+  /* Define a largura mínima para o trecho não estourar a barra. */
+  min-width: 0;
   /* Define a altura do elemento. Valor usado: 100%. */
   height: 100%;
   /* Arredonda os cantos. Valor usado: inherit. */
   border-radius: inherit;
-  /* Define o fundo do elemento. Valor usado: #fff. */
-  background: #fff;
+  /* Mostra os stories ainda não vistos em cinza translúcido. */
+  background: #ffffff70;
+}
+/* Clareia os trechos dos stories já exibidos na sequência. */
+.story-progress-seen {
+  background: #fff !important;
+}
+/* Áreas clicáveis transparentes permitem avançar e voltar no visualizador. */
+.story-step {
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  bottom: 20%;
+  width: 34%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+}
+/* Posiciona a área de voltar no lado esquerdo do story. */
+.story-step-previous {
+  left: 0;
+}
+/* Posiciona a área de avançar no lado direito do story. */
+.story-step-next {
+  right: 0;
 }
 /* Este seletor aplica estilos aos elementos .story-viewer-user. */
 .story-viewer-user {
@@ -922,6 +982,25 @@
 .story-viewer-user span {
   /* Define a cor do texto e dos ícones. Valor usado: #ddd. */
   color: #ddd;
+}
+/* Botão para excluir o story próprio sem cobrir o nome da conta. */
+.story-delete {
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  right: 14px;
+  padding: 7px 10px;
+  border: 1px solid #ffffff80;
+  border-radius: 7px;
+  background: #171717b8;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+/* Indica que a solicitação de exclusão está sendo processada. */
+.story-delete:disabled {
+  opacity: .65;
+  cursor: wait;
 }
 /* Este seletor aplica estilos aos elementos .story-viewer-image. */
 .story-viewer-image {
@@ -1105,12 +1184,13 @@
     color: #fff;
   }
   .stories {
-    /* Define o espaço entre os elementos filhos. Valor usado: 11px. */
-    gap: 11px;
     /* Define o espaço interno entre o conteúdo e a borda. Valor usado: 13px 14px 17px. */
     padding: 13px 14px 17px;
     /* Define a borda inferior. Valor usado: 1px solid #25272c. */
     border-bottom: 1px solid #25272c;
+  }
+  .stories-track {
+    gap: 11px;
   }
   .story {
     /* Define o valor da propriedade visual “flex-basis”. Valor usado: 68px. */
@@ -1123,10 +1203,6 @@
     width: 63px;
     /* Define a altura do elemento. Valor usado: 63px. */
     height: 63px;
-  }
-  .story-next {
-    /* Escolhe o modelo de layout usado pelos elementos filhos. Valor usado: none. */
-    display: none;
   }
   .post-list {
     /* Limita a largura máxima do elemento. Valor usado: none. */
@@ -1176,6 +1252,144 @@
   /* Controla sublinhados e outras decorações do texto. Valor usado: underline. */
   text-decoration: underline;
 }
+
+/* Janela ampliada da publicação, com a foto e os detalhes lado a lado. */
+.post-viewer-backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background: rgb(0 0 0 / 78%);
+}
+.post-viewer {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  width: min(1120px, 94vw);
+  height: min(760px, 88vh);
+  overflow: hidden;
+  border: 1px solid #34363b;
+  border-radius: 4px;
+  background: #111214;
+}
+.post-viewer-close {
+  position: fixed;
+  z-index: 2;
+  top: 18px;
+  right: 24px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 38px;
+  line-height: 1;
+  cursor: pointer;
+}
+.post-viewer-image {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: #090a0b;
+  object-fit: contain;
+}
+.post-viewer-details {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+.post-viewer-comments {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 16px;
+}
+.post-viewer-header,
+.post-viewer-caption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid #292b30;
+}
+.post-viewer-header span {
+  overflow: hidden;
+  color: #aaa;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.post-viewer-caption {
+  align-items: flex-start;
+  border: 0;
+}
+.post-viewer-caption .avatar,
+.post-viewer-header .avatar {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.post-viewer-caption p,
+.post-viewer-comment {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.post-viewer-comment {
+  padding: 0 0 12px;
+}
+.post-viewer-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  padding: 14px 16px;
+  border-top: 1px solid #292b30;
+}
+.post-viewer-actions button {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+.post-viewer-actions svg {
+  width: 24px;
+  height: 24px;
+}
+.post-viewer-actions .is-liked {
+  color: #ff405e;
+}
+.post-viewer-actions span {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 700;
+}
+.post-viewer-comment-form {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-top: 1px solid #292b30;
+}
+.post-viewer-comment-form input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: white;
+}
+.post-viewer-comment-form button {
+  border: 0;
+  background: transparent;
+  color: #7fa6ff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 /* Ajustes de layout para telas menores. */
 @media (max-width: 960px) {
   .login-page {
@@ -1199,5 +1413,33 @@
   .login-form {
     /* Limita a largura máxima do elemento. Valor usado: none. */
     max-width: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .post-viewer-backdrop {
+    padding: 12px;
+  }
+  .post-viewer {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    width: min(560px, 96vw);
+    height: min(850px, 92vh);
+  }
+  .post-viewer-image {
+    min-height: 0;
+  }
+  .post-viewer-details {
+    max-height: 40vh;
+  }
+  .post-viewer-header {
+    padding: 10px 14px;
+  }
+  .post-viewer-caption {
+    padding: 10px 14px;
+  }
+  .post-viewer-actions,
+  .post-viewer-comment-form {
+    padding: 10px 14px;
   }
 }

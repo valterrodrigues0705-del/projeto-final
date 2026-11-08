@@ -3,7 +3,7 @@ export default function Footer({ variant = 'login' }) {
   if (variant === 'feed') {
     return <footer className="feed-footer">
       <p>Sobre · Ajuda · Imprensa · API · Carreiras<br/>Privacidade · Termos · Localizações · Idioma</p>
-      <span>© 2026 MOMENTOS</span>
+      <span>© 2026 PROJETO FINAL</span>
     </footer>
   }
 
