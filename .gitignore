@@ -1,0 +1,7 @@
+# Ignora dependências instaladas localmente; package-lock.json registra como instalá-las.
+**/node_modules/
+
+# Ignora arquivos de saída e temporários, como builds, PDFs gerados e prévias de páginas.
+**/dist/
+/output/
+/tmp/
