@@ -1,5 +1,4 @@
 
-/* Configurações: navegação das seções, formulários, controles e layout responsivo. */
 
 .settings-page {
 
@@ -9,7 +8,7 @@
 
   color: #f4f4f5;
 }
-/* Barra superior com a marca e o caminho de retorno. */
+
 
 .settings-header {
 
@@ -79,7 +78,7 @@
 
   font-size: 22px;
 }
-/* Coloca a navegação lateral ao lado do conteúdo selecionado. */
+
 
 .settings-layout {
 
@@ -93,7 +92,7 @@
 
   padding: 48px 28px 80px;
 }
-/* Lista de seções e indicação da seção atual. */
+
 
 .settings-nav {
 
@@ -200,7 +199,7 @@
 
   padding-top: 18px;
 }
-/* Área onde cada painel de configurações é exibido. */
+
 
 .settings-content {
 
@@ -275,7 +274,7 @@
 
   line-height: 1.55;
 }
-/* Preferências apresentadas em linhas com interruptores. */
+
 
 .setting-row {
 
@@ -457,7 +456,7 @@
 
   color: #fff;
 }
-/* Cartão demonstrativo de QR code. */
+
 
 .qr-section {
 
@@ -696,7 +695,7 @@
 
   font-size: 13px;
 }
-/* Campos usados para editar os dados locais do perfil. */
+
 
 .profile-edit-form {
 
@@ -812,7 +811,7 @@
   border: 1px solid #363940;
 
   border-radius: 9px;
-  /* Desenha um contorno externo, usado também no foco acessível. */
+ 
   outline: none;
 
   background: #14161a;
@@ -858,7 +857,7 @@
 
   margin-top: 10px;
 }
-/* Ajustes de layout para telas menores. */
+
 @media (max-width: 760px) {
   .settings-header {
 

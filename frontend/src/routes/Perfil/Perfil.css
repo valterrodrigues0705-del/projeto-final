@@ -181,7 +181,7 @@
 }
 
 .profile-settings-menu button:hover, .profile-settings-menu button:focus-visible {
-  /* Desenha um contorno externo, usado também no foco acessível. */
+
   outline: none;
 
   background: #3c3f45;
@@ -233,7 +233,6 @@
 
   white-space: pre-wrap;
 }
-/* Botões de edição e itens arquivados. */
 
 .profile-actions {
 
@@ -317,7 +316,7 @@
 
   font-size: 13px;
 }
-/* Navegação entre publicações, salvos, reposts e marcações. */
+
 
 .profile-tabs {
 
@@ -363,7 +362,7 @@
   height: 2px;
 
   background: #f7f7f8;
-  /* Insere conteúdo criado pelo CSS, como ícones decorativos. */
+  
   content: '';
 }
 
@@ -378,7 +377,7 @@
 
   display: none;
 }
-/* Estado vazio apresentado quando ainda não há conteúdo. */
+
 
 .profile-empty {
 
@@ -440,13 +439,13 @@
 
   font-weight: 600;
 }
-/* Grade com as fotos já publicadas pela conta. */
+
 .profile-post-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 4px;
 }
-/* Cada foto usa um quadrado, como na grade de perfil do Instagram. */
+
 .profile-post-tile {
   position: relative;
   aspect-ratio: 1;
@@ -458,7 +457,7 @@
   height: 100%;
   object-fit: cover;
 }
-/* A ação de exclusão fica sobre a foto e aparece também em dispositivos touch. */
+
 .profile-post-tile button {
   position: absolute;
   right: 8px;
@@ -571,7 +570,7 @@
   background: #121418;
 
   color: #fff;
-  /* Desenha um contorno externo, usado também no foco acessível. */
+  
   outline: 0;
 
   resize: vertical;
@@ -653,7 +652,7 @@
 
   font-size: 13px;
 }
-/* Ajustes de layout para telas menores. */
+
 @media (max-width: 1120px) {
   .profile-app {
 
@@ -718,7 +717,7 @@
     margin-top: 38px;
   }
 }
-/* Ajustes de layout para telas menores. */
+
 @media (max-width: 650px) {
   .profile-app {
 

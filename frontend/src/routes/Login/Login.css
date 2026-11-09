@@ -1,7 +1,4 @@
 
-/* Login: organiza a apresentação, o formulário e os ajustes para telas menores. */
-/* Grade principal: apresentação à esquerda e formulário à direita. */
-
 .login-page {
 
   min-height: 100svh;
@@ -74,7 +71,6 @@
 
   color: transparent;
 }
-/* Cartões sobrepostos e adesivos que compõem a ilustração da tela. */
 
 .photo-stack {
 
@@ -245,7 +241,7 @@
 
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
-/* Campos, botões e mensagens do formulário. */
+
 
 .login-panel {
 
@@ -316,7 +312,7 @@
   background: #121212;
 
   color: #f5f5f5;
-  /* Desenha um contorno externo, usado também no foco acessível. */
+
   outline: none;
 }
 
@@ -431,7 +427,7 @@
 
 .divider::before,
 .divider::after {
-  /* Insere conteúdo criado pelo CSS, como ícones decorativos. */
+
   content: '';
 
   flex: 1;
@@ -518,7 +514,7 @@
 
   text-align: center;
 }
-/* Rodapé com links e créditos. */
+
 
 .login-footer {
 

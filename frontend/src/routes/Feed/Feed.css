@@ -1,7 +1,4 @@
 
-/* Feed: define o menu lateral, a coluna de publicações, stories e sugestões. */
-/* Grade geral do feed e variáveis de cor usadas pelos elementos filhos. */
-
 .feed-app {
 
   --feed-bg: #0d0f12;
@@ -24,7 +21,6 @@
 
   color: #f4f4f5;
 }
-/* Menu fixo que expande ao receber foco ou passar o mouse. */
 
 .feed-sidebar {
 
@@ -230,21 +226,21 @@
 
   display: none;
 }
-/* Faixa horizontal de stories e seus avatares circulares. */
+
 
 .stories {
 
   position: relative;
-  /* Mantém a faixa ocupando a largura da coluna do feed. */
+
   width: 100%;
 
   overflow-x: auto;
-  /* Reserva espaço para os círculos e centraliza quando todos cabem. */
+
   padding: 2px 3px 23px;
 
   scrollbar-width: none;
 }
-/* Faixa interna que pode crescer além da área visível sem cortar o primeiro story. */
+
 .stories-track {
   display: flex;
   width: max-content;
@@ -252,7 +248,7 @@
   justify-content: center;
   gap: 18px;
 }
-/* Quando há mais stories que espaço, alinha a faixa à esquerda para permitir rolagem completa. */
+
 .stories-overflow .stories-track {
   justify-content: flex-start;
 }
@@ -413,7 +409,7 @@
 
   margin: 8px auto 0;
 }
-/* Cartões de publicação, mídia e controles de interação. */
+
 
 .post {
 
@@ -613,7 +609,7 @@
   cursor: pointer;
 
   font-size: 12px;
-  /* Remove o visual padrão do botão para manter a aparência original do link. */
+ 
   padding: 0;
   border: 0;
   background: none;
@@ -647,7 +643,7 @@
   padding: 2px 0;
 
   border: 0;
-  /* Desenha um contorno externo, usado também no foco acessível. */
+
   outline: 0;
 
   background: none;
@@ -696,7 +692,7 @@
 
   font-size: 21px;
 }
-/* Coluna de sugestões e informações da conta. */
+
 
 .feed-right {
 
@@ -843,7 +839,7 @@
 
   font-size: 13px;
 }
-/* Visualizador em tela cheia aberto ao selecionar um story. */
+
 
 .story-modal {
 
@@ -892,37 +888,37 @@
   right: 10px;
 
   left: 10px;
-  /* Distribui uma barra de progresso para cada story da sequência. */
+ 
   display: flex;
-  /* Cria um pequeno espaço entre as partes da barra. */
+
   gap: 4px;
 
   height: 3px;
 
   border-radius: 9px;
-  /* Deixa o fundo transparente para cada trecho ter sua própria cor. */
+
   background: transparent;
 }
 
 .story-progress span {
 
   display: block;
-  /* Divide o espaço igualmente entre os stories. */
+
   flex: 1;
-  /* Define a largura mínima para o trecho não estourar a barra. */
+
   min-width: 0;
 
   height: 100%;
 
   border-radius: inherit;
-  /* Mostra os stories ainda não vistos em cinza translúcido. */
+
   background: #ffffff70;
 }
-/* Clareia os trechos dos stories já exibidos na sequência. */
+
 .story-progress-seen {
   background: #fff !important;
 }
-/* Áreas clicáveis transparentes permitem avançar e voltar no visualizador. */
+
 .story-step {
   position: absolute;
   z-index: 2;
@@ -935,11 +931,11 @@
   color: transparent;
   cursor: pointer;
 }
-/* Posiciona a área de voltar no lado esquerdo do story. */
+
 .story-step-previous {
   left: 0;
 }
-/* Posiciona a área de avançar no lado direito do story. */
+
 .story-step-next {
   right: 0;
 }
@@ -982,7 +978,7 @@
 
   color: #ddd;
 }
-/* Botão para excluir o story próprio sem cobrir o nome da conta. */
+
 .story-delete {
   position: absolute;
   z-index: 3;
@@ -996,7 +992,7 @@
   font-size: 12px;
   cursor: pointer;
 }
-/* Indica que a solicitação de exclusão está sendo processada. */
+
 .story-delete:disabled {
   opacity: .65;
   cursor: wait;
@@ -1058,7 +1054,7 @@
   background: #0003;
 
   color: #fff;
-  /* Desenha um contorno externo, usado também no foco acessível. */
+
   outline: 0;
 }
 
@@ -1077,7 +1073,7 @@
 
   font-size: 25px;
 }
-/* Ajustes de layout para telas menores. */
+
 @media (max-width: 1120px) {
   .feed-app {
 
@@ -1120,7 +1116,7 @@
     display: none;
   }
 }
-/* Ajustes de layout para telas menores. */
+
 @media (max-width: 650px) {
   .feed-app {
 
@@ -1252,7 +1248,7 @@
   text-decoration: underline;
 }
 
-/* Janela ampliada da publicação, com a foto e os detalhes lado a lado. */
+
 .post-viewer-backdrop {
   position: fixed;
   z-index: 100;
@@ -1389,7 +1385,6 @@
   cursor: pointer;
 }
 
-/* Ajustes de layout para telas menores. */
 @media (max-width: 960px) {
   .login-page {
 
