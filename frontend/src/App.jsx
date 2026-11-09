@@ -11,9 +11,7 @@ const USER_KEY = 'projeto-final-user'
 
 // Declara as URLs das telas e conecta os eventos dos componentes à navegação.
 function AppRoutes() {
-  // navigate altera a rota sem recarregar o site.
   const navigate = useNavigate()
-  // A seção de configurações fica na URL para permitir voltar/avançar no navegador.
   const [searchParams, setSearchParams] = useSearchParams()
   const [token, setToken] = useState(() => localStorage.getItem(TOKEN_KEY) || '')
   const [user, setUser] = useState(() => {
@@ -99,7 +97,6 @@ function AppRoutes() {
     setUser(updatedUser)
   }, [])
 
-  // Funções pequenas deixam claro para onde cada botão de navegação leva.
   function goToFeed() {
     navigate('/feed')
   }
