@@ -8,7 +8,7 @@ const porta = Number(process.env.PORT || 3000)
 const arquivoDados = path.join(__dirname, 'dados.json')
 const sessoes = new Map()
 
-// Permite que o frontend Vite local envie e receba JSON da API.
+// Permite que o frontend local envie e receba JSON da API.
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')

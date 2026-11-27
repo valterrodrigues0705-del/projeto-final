@@ -1,4 +1,4 @@
-// Endereço do backend Node local. Pode ser substituído por uma variável Vite ao publicar.
+// Endereço do backend local. Pode ser substituído pela variável VITE_API_URL ao publicar.
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
 // Envia uma chamada ao backend e devolve os dados recebidos.
